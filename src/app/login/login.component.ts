@@ -47,20 +47,21 @@ export class LoginComponent implements OnInit {
 
   loginUser()
   {
-      this._service.loginUserFromRemote(this.user.email,this.user.password).subscribe(
-        (data: any) => {
-          console.log(data);
-          console.log("Response Received");
-          sessionStorage.setItem('loggedUser', this.user.email);
-          sessionStorage.setItem('USER', "user");
-          sessionStorage.setItem('ROLE', "user");
-          this._router.navigate(['/userdashboard']);
-        },
-        (error: { error: any; }) => {
-          console.log(error.error);
-          this.msg="Bad credentials, please enter valid credentials !!!";
-        }
-      )
+    this._router.navigate(['/userdashboard']);
+      // this._service.loginUserFromRemote(this.user.email,this.user.password).subscribe(
+      //   (data: any) => {
+      //     console.log(data);
+      //     console.log("Response Received");
+      //     sessionStorage.setItem('loggedUser', this.user.email);
+      //     sessionStorage.setItem('USER', "user");
+      //     sessionStorage.setItem('ROLE', "user");
+      //     this._router.navigate(['/userdashboard']);
+      //   },
+      //   (error: { error: any; }) => {
+      //     console.log(error.error);
+      //     this.msg="Bad credentials, please enter valid credentials !!!";
+      //   }
+      // )
   }
 
   adminLogin()

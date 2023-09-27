@@ -22,18 +22,20 @@ export class RegistrationComponent implements OnInit {
 
   registerUser()
   {
-     this._service.registerUserFromRemote(this.user).subscribe(
-       data => {
-         console.log("Registration Success");
-         localStorage.setItem("username",this.user.firstName);
-         this._router.navigate(['/registrationsuccess']);
-       },
-       error => {
-         console.log("Registration Failed");
-         console.log(error.error);
-         this.msg = "User with "+this.user.email+" already exists !!!";
-       }
-     )
+    // TODO: Registation API Call
+    this._router.navigate(['/registrationsuccess']);
+    //  this._service.registerUserFromRemote(this.user).subscribe(
+    //    data => {
+    //      console.log("Registration Success");
+    //      localStorage.setItem("username",this.user.firstName);
+    //      this._router.navigate(['/registrationsuccess']);
+    //    },
+    //    error => {
+    //      console.log("Registration Failed");
+    //      console.log(error.error);
+    //      this.msg = "User with "+this.user.email+" already exists !!!";
+    //    }
+    //  )
   }
 
 }
