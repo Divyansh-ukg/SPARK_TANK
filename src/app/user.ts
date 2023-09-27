@@ -2,7 +2,8 @@ export class User {
 
     //id:number = 0;
     email:string = "";
-    username:string = "";
+    firstName:string = "";
+    lastName:string = "";
     mobile:string = "";
     gender:string = "";
     bloodgroup:string = "";

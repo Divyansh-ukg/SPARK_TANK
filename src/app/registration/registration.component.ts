@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private _service : RegistrationService, private _router : Router) { }
 
   ngOnInit(): void {
+    console.log('user',this.user)
   }
 
   registerUser()
@@ -24,7 +25,7 @@ export class RegistrationComponent implements OnInit {
      this._service.registerUserFromRemote(this.user).subscribe(
        data => {
          console.log("Registration Success");
-         localStorage.setItem("username",this.user.username);
+         localStorage.setItem("username",this.user.firstName);
          this._router.navigate(['/registrationsuccess']);
        },
        error => {
