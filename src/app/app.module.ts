@@ -23,6 +23,8 @@ import { RequesthistoryfromuserComponent } from './requesthistoryfromuser/reques
 import { AuthGuard } from './auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { SearchresultComponent } from './searchresult/searchresult.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { MatCardModule } from '@angular/material/card';
     RequesthistoryComponent,
     RequestbloodComponent,
     UserasdonorComponent,
-    RequesthistoryfromuserComponent
+    RequesthistoryfromuserComponent,
+    SearchresultComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

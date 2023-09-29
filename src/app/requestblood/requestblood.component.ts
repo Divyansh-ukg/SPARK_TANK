@@ -20,6 +20,7 @@ export class RequestbloodComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    console.log('1111')
     this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
@@ -27,6 +28,7 @@ export class RequestbloodComponent implements OnInit {
     }   
     this.loggedUser = this.tempUser;
     this.msg = '';
+    console.log('2222')
   }
 
   navigateHome()
@@ -36,17 +38,18 @@ export class RequestbloodComponent implements OnInit {
   
   requestBlood()
   {
-    this.donorService.requestForBlood(this.request).subscribe(
-      data => {
-        console.log("Request sent Successfully");
-        this.msg = "Blood Request Sent Successfully !!!";
-        this._router.navigate(['/userdashboard']);
-      },
-      error => {
-        console.log("request Failed");
-        console.log(error.error);
-      }
-    )
+    this._router.navigate(['/searchresult'])
+    // this.donorService.requestForBlood(this.request).subscribe(
+    //   data => {
+    //     console.log("Request sent Successfully");
+    //     this.msg = "Blood Request Sent Successfully !!!";
+    //     this._router.navigate(['/userdashboard']);
+    //   },
+    //   error => {
+    //     console.log("request Failed");
+    //     console.log(error.error);
+    //   }
+    // )
   }
 
   logout()

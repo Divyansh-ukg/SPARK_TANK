@@ -13,13 +13,11 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Idendity</th>
-            <th>Name</th>
-            <th>mobile</th>
+            <!-- <th>Idendity</th> -->
+            <th>Patient Name</th>
+            <th>Mobile</th>
             <th>Gender</th>
             <th>Blood Group</th>
-            <th>age</th>
-            <th>Disease</th>
             <th>Required Units</th>
             <th>Status</th>
           </tr>
@@ -33,8 +31,8 @@
             <td>{{history.mobile}}</td>
             <td>{{history.gender}}</td>
             <td style="color: red; font-size: 25px;">{{history.bloodgroup}}</td>
-            <td>{{history.age}} years</td>
-            <td style="color: navy;">{{history.disease}}</td>
+            <!-- <td>{{history.age}} years</td> -->
+            <!-- <td style="color: navy;">{{history.disease}}</td> -->
             <td>{{history.units}} units</td>
             <td>
                 <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>

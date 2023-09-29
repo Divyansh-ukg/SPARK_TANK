@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { DonorService } from '../donor.service';
 
 @Component({
@@ -50,7 +50,9 @@ export class RequesthistoryfromuserComponent implements OnInit {
 
   reloadData() 
   {
-      this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
+      // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
+      this.requests = of([{name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'}])
+    
       console.log(this.requests);
   }
 
