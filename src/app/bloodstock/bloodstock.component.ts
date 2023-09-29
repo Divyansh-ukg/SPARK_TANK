@@ -8,7 +8,7 @@ import { DonorService } from '../donor.service';
   templateUrl: './bloodstock.component.html',
   styleUrls: ['./bloodstock.component.css']
 })
-export class BloodstockComponent implements OnInit {
+export class BloodstockComponent {
 
   loggedUser = '';
   tempUser = '';
@@ -16,47 +16,72 @@ export class BloodstockComponent implements OnInit {
   bloodDetails : Observable<any[]> | undefined;
   
   constructor(private donorService: DonorService, private activatedRoute: ActivatedRoute, private _router : Router) { }
-
-  ngOnInit(): void 
-  {
-    this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
-    if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
+  bloodGroupsData = [
     {
-      this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
-    }   
-    this.loggedUser = this.tempUser;
-
-    this.getBloodDetails();
-
-    if(this.loggedUser === "admin@gmail.com"){
-      this.title = "Admin Dashboard";
+      "bloodGroup": "A-",
+      "count": 1
+    },
+    {
+      "bloodGroup": "AB+",
+      "count": 3
+    },
+    {
+      "bloodGroup": "B+",
+      "count": 2
+    },
+    {
+      "bloodGroup": "B-",
+      "count": 1
+    },
+    {
+      "bloodGroup": "O+",
+      "count": 1
+    },
+    {
+      "bloodGroup": "O-",
+      "count": 1
     }
-    else{
-      this.title = "User Dashboard";
-    }
-  }
+  ];
+  // ngOnInit(): void 
+  // {
+  //   this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+  //   if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
+  //   {
+  //     this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
+  //   }   
+  //   this.loggedUser = this.tempUser;
 
-  getBloodDetails()
-  {
-    this.bloodDetails = this.donorService.getBloodDetails();
-  }
+  //   this.getBloodDetails();
 
-  navigateHome()
-  {
-    if(this.loggedUser === "admin@gmail.com"){
-      this.title = "Admin Dashboard";
-      this._router.navigate(['/loginsuccess']);
-    }
-    else{
-      this.title = "User Dashboard";
-      this._router.navigate(['/userdashboard']);
-    }
-  }
+  //   if(this.loggedUser === "admin@gmail.com"){
+  //     this.title = "Admin Dashboard";
+  //   }
+  //   else{
+  //     this.title = "User Dashboard";
+  //   }
+  // }
 
-  logout()
-  {
-    sessionStorage.clear();
-    this._router.navigate(['/login']);
-  }
+  // getBloodDetails()
+  // {
+  //   this.bloodDetails = this.donorService.getBloodDetails();
+  // }
+
+  // navigateHome()
+  // {
+  //   if(this.loggedUser === "admin@gmail.com"){
+  //     this.title = "Admin Dashboard";
+  //     this._router.navigate(['/loginsuccess']);
+  //   }
+  //   else{
+  //     this.title = "User Dashboard";
+  //     this._router.navigate(['/userdashboard']);
+  //   }
+  // }
+
+  // logout()
+  // {
+  //   sessionStorage.clear();
+  //   this._router.navigate(['/login']);
+  // }
 
 }

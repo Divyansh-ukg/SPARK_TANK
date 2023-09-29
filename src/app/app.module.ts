@@ -21,6 +21,8 @@ import { RequestbloodComponent } from './requestblood/requestblood.component';
 import { UserasdonorComponent } from './userasdonor/userasdonor.component';
 import { RequesthistoryfromuserComponent } from './requesthistoryfromuser/requesthistoryfromuser.component';
 import { AuthGuard } from './auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { AuthGuard } from './auth.guard';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent, LoginComponent]

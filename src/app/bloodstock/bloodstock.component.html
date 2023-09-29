@@ -1,4 +1,4 @@
-<div class="sidebar-logo">
+<!-- <div class="sidebar-logo">
     <div class="welcometxt" style="float: left;"><b style="color: white;">{{title}}</b></div>
     <button class="logoutbtn" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
     <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
@@ -16,4 +16,28 @@
     </div>
  </div>
 
- <app-footer></app-footer>
+ <app-footer></app-footer> -->
+
+ <!-- blood-group.component.html -->
+<!-- blood-group.component.html -->
+
+<div class="container">
+    <h2>Blood Group Statistics</h2>
+    <div class="card-container">
+      <div class="card" *ngFor="let group of bloodGroupsData">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ group.bloodGroup }}</mat-card-title>
+          </mat-card-header>
+          <a>
+            <img class="bloodimg" [src]="'assets/img/bloodDrop.png'" width="100" height="100" alt="Blood Drop">
+          </a>
+          <mat-card-content>
+            <p>Number of Users: {{ group.count }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
+  
