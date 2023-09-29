@@ -1,8 +1,7 @@
 /* blood-group.component.css */
 
-.container {
-  text-align: center;
-  padding: 20px;
+h2 {
+  padding-left: 45%
 }
 
 .card-container {
