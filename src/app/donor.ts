@@ -2,14 +2,16 @@ export class Donor
 {
     id : number = 0;
 	name : string = "";
-	bloodGroup : string = "";
-	units : number = 0;
-	mobile : string = "";
-	gender : string = "";
-	age : number = 0;
-	city : string = "";
+	password: string="";
+	phoneNum : number = 0;
 	address : string  = "";
-	date : string = "";
+	bloodGroup : string = "";
+	gender: string="";
+    units ?: number = 0;
+	age ?: number = 0;
+	city ?: string = "";
+	mobile ?: string="";
+	date ?: string="";
 
     constructor() {}
     

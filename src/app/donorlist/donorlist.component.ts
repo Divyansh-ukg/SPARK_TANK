@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Donor } from '../donor';
 import { DonorService } from '../donor.service';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './donorlist.component.html',
   styleUrls: ['./donorlist.component.css']
 })
+
 export class DonorlistComponent implements OnInit {
 
   loggedUser = '';
@@ -40,7 +41,63 @@ export class DonorlistComponent implements OnInit {
   }
 
   reloadData() {
-    this.donors = this.donorService.getDonorList();
+    //this.donors = this.donorService.getDonorList();
+    this.donors = of([
+      {
+          "id": 0,
+          "name": "aditya",
+          "password": "test",
+          "phoneNum": 9922932245,
+          "address": "Noida",
+          "bloodGroup": "B+",
+          "gender": "male"
+      },
+      {
+          "id": 1,
+          "name": "himanshi",
+          "password": "test",
+          "phoneNum": 34543,
+          "address": "Noida",
+          "bloodGroup": "O+",
+          "gender": "female"
+      },
+      {
+        "id": 2,
+        "name": "Ashutosh",
+        "password": "test",
+        "phoneNum": 34543,
+        "address": "Noida",
+        "bloodGroup": "O+",
+        "gender": "male"
+    },
+    {
+      "id": 3,
+      "name": "Divyansh",
+      "password": "test",
+      "phoneNum": 34543,
+      "address": "Noida",
+      "bloodGroup": "A+",
+      "gender": "male"
+  },
+  {
+    "id": 4,
+    "name": "Raj",
+    "password": "test",
+    "phoneNum": 34543,
+    "address": "Noida",
+    "bloodGroup": "A+",
+    "gender": "male"
+},
+{
+  "id": 5,
+  "name": "test",
+  "password": "test",
+  "phoneNum": 34543,
+  "address": "Noida",
+  "bloodGroup": "A-",
+  "gender": "female"
+}
+    ]);
     console.log(this.donors);
   }
 

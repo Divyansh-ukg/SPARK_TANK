@@ -6,7 +6,7 @@ export class Requesting
     disease:string = '';
     mobile:string = '';
     gender:string = '';
-    age:number = 18;
+    age:number = 1;
     status:string = 'false';
 
     constructor() {}
