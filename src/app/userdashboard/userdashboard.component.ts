@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Requesting } from '../requesting';
 import { DonorService } from '../donor.service';
 import { Donor } from '../donor';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-userdashboard',
@@ -25,6 +25,7 @@ export class UserdashboardComponent implements OnInit {
   totalusers : Observable<any> | undefined;
   totalbloodgroups : Observable<any> | undefined;
   totalunits : Observable<any> | undefined;
+  bloodRequests : Observable<any> | undefined;
 
   constructor(private _router : Router, private donorService: DonorService, private activatedRoute: ActivatedRoute) { }
 
@@ -44,6 +45,7 @@ export class UserdashboardComponent implements OnInit {
     this.donationcount = this.donorService.getTotalDonationCount(this.loggedUser);
     this.totalrequests = this.donorService.getTotalRequests(this.loggedUser);
     this.requests = this.donorService.getRequestHistory();
+    this.reloadData();
   }
 
   navigateHome()
@@ -61,5 +63,25 @@ export class UserdashboardComponent implements OnInit {
     sessionStorage.clear();
     this._router.navigate(['/login']);
   }
+
+  pendingRequest(){
+    this._router.navigate(['/searchresult']);
+  }
+
+  acceptRequest(){
+
+  }
+
+  reloadData() 
+  {
+      // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
+      this.bloodRequests = of([{name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
+    
+      console.log(this.bloodRequests);
+  }
+
 
 }

@@ -12,12 +12,14 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>EmpId</th>
                     <th>Name</th>
                     <th class="checkbox"> <input type="checkbox" (change)="selectAll($event)"> Select All</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let result of searchBloodGroupResult">
+                    <td>{{result.id}}</td>
                     <td>{{result.name}}</td>
                     <td> <input class="checkbox" [(ngModel)]="result.selected" type="checkbox"></td>
                 </tr>

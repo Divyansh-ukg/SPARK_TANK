@@ -51,7 +51,10 @@ export class RequesthistoryfromuserComponent implements OnInit {
   reloadData() 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
-      this.requests = of([{name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'}])
+      this.requests = of([{name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
     
       console.log(this.requests);
   }

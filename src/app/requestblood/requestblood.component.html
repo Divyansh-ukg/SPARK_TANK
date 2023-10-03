@@ -1,6 +1,6 @@
 <div class="sidebar-logo">
-    <div class="welcometxt" style="float: left;"><b style="color: white;">User Dashboard</b></div>
-    <button class="logoutbtn" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
+    <!-- <div class="welcometxt" style="float: left;"><b style="color: white;">User Dashboard</b></div> -->
+    <button class="welcometxt" style="float: left;" (click)="navigateHome()"><i class="fa fa-home"></i> Home</button>
       <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
       <button class="logoutbtn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
   </div>
@@ -38,13 +38,13 @@
    <small class="text-danger" [class.d-none]="units.valid || units.untouched"><b>required field</b></small>
   </div>
   
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="disease">Disease:</label>
     <input type="text" class="form-control" placeholder="enter disease name" name="disease" [(ngModel)]="request.disease" 
     #disease="ngModel"
     [class.is-invalid]="disease.invalid && disease.touched">
    <small class="text-danger" [class.d-none]="disease.valid || disease.untouched"><b>required field</b></small>
-  </div>
+  </div> -->
   
   <div class="form-group">
     <label for="mobile">Mobile Number: <b class="text-danger">*</b></label>
