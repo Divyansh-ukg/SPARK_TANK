@@ -4,7 +4,7 @@
 .sidebar-container {
     position: relative;
     width: 240px;
-    height: 600px;
+    height: 100%;
     left: 0;
     overflow-x: hidden;
     overflow-y: auto;
