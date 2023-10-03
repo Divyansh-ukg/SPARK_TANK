@@ -62,4 +62,14 @@ export class RequesthistoryfromuserComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
+  pendingRequest(){
+    this._router.navigate(['/searchresult']);
+  }
+
+  acceptRequest(){
+
+  }
+
+  
+
 }
