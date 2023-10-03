@@ -78,7 +78,14 @@ export class UserdashboardComponent implements OnInit {
       this.bloodRequests = of([{name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
       {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
       {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}
+      // {name: 'Himanshi Sinha', mobile : '9999478179', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}
+    ])
     
       console.log(this.bloodRequests);
   }
