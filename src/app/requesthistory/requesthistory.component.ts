@@ -30,12 +30,6 @@ export class RequesthistoryComponent implements OnInit {
     // }   
     // this.loggedUser = this.tempUser;
     this.msg = '';
-    if(this.loggedUser === "admin@gmail.com"){
-      this.title = "Admin Dashboard";
-    }
-    else{
-      this.title = "User Dashboard";
-    }
     this.reloadData();
   }
 
@@ -47,14 +41,7 @@ export class RequesthistoryComponent implements OnInit {
 
   reloadData() 
   {
-    if(this.loggedUser === "admin@gmail.com")
-    {
-      this.requests = this.donorService.getRequestHistory();
-    }
-    else
-    {
-    //  this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
-    }
+    this.requests = this.donorService.getRequestHistory(2);
     console.log(this.requests);
   }
 
