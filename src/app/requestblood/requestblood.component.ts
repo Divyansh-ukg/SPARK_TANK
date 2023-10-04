@@ -19,7 +19,7 @@ export class RequestbloodComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
       this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
@@ -32,7 +32,9 @@ export class RequestbloodComponent implements OnInit {
 
   navigateHome()
   {
-    this._router.navigate(['/userdashboard']);
+    this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+    console.log(this.loggedUser,"abcdedf");
+    this._router.navigate(['user', this.loggedUser]);
   }
   
   requestBlood()

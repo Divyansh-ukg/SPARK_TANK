@@ -40,7 +40,7 @@ import { SearchresultComponent } from './searchresult/searchresult.component';
 // ];
 
 const routes: Routes = [
-  {path:'user/:userid',component:UserdashboardComponent},
+  {path:'user/:employeeId',component:UserdashboardComponent},
   {path:'loginsuccess',component:LoginsuccessComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'login',component:LoginComponent},

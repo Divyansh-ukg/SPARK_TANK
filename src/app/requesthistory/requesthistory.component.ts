@@ -23,7 +23,7 @@ export class RequesthistoryComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
       this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);

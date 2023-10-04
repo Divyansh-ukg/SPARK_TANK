@@ -32,7 +32,8 @@ export class UserdashboardComponent implements OnInit {
   ngOnInit(): void 
   {
     this.activatedRoute.params.subscribe(params => {
-      this.loggedUser = params['userid'];
+      console.log(params['employeeId'],"hello");
+      this.loggedUser = params['employeeId'];
     });
 
     localStorage.setItem("employeeId",this.loggedUser);
@@ -50,7 +51,7 @@ export class UserdashboardComponent implements OnInit {
     // this.donationcount = this.donorService.getTotalDonationCount(this.loggedUser);
     // this.totalrequests = this.donorService.getTotalRequests(this.loggedUser);
     // this.requests = this.donorService.getRequestHistory();
-    this.reloadData();
+    this.reloadData(this.loggedUser);
   }
 
   navigateHome()
@@ -77,9 +78,22 @@ export class UserdashboardComponent implements OnInit {
 
   }
 
-  reloadData() 
+  reloadData(user: string) 
   {
-      // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
+      // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
+      this.donorService.getRequestHistoryByEmail(this.loggedUser).subscribe(
+        data => {
+          console.log("Request sent Successfully");
+          this.msg = "Blood Request Sent Successfully !!!";
+          this.bloodRequests = data;
+        //  this.donorService.setBloodGroup(this.request.bloodgroup);
+         // this._router.navigate(['/searchresult'])
+        },
+        error => {
+          console.log("request Failed");
+          console.log(error.error);
+        }
+      )
       this.bloodRequests = 
       of([{name: 'Himanshi Sinha', mobile : '1234', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
       {name: 'Himanshi Sinha', mobile : '123455', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
@@ -91,6 +105,7 @@ export class UserdashboardComponent implements OnInit {
       {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
     
       console.log(this.bloodRequests);
+      
   }
 
 

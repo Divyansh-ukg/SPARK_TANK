@@ -38,6 +38,7 @@ export class DonorService {
 
   public getRequestHistoryByEmail(loggedUser:string): Observable<any>
   {
+    console.log(loggedUser,"api call");
     return this._http.get<any>(`${NAV_URL}/requestHistory/`+loggedUser);
   }
 
