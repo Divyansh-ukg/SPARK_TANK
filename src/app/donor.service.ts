@@ -60,7 +60,7 @@ export class DonorService {
 
   public requestForBlood(request:Requesting):Observable<any>
   {
-    return this._http.post<any>(`${NAV_URL}/requestblood`,request);
+    return this._http.post<any>(`${NAV_URL}/api/blood-request/create`,request);
   }
 
   public requestForAddingDonor(donor:Donor):Observable<any>

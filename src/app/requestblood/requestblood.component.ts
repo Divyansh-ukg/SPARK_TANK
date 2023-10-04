@@ -26,8 +26,8 @@ export class RequestbloodComponent implements OnInit {
     }   
     this.loggedUser = this.tempUser;
     this.msg = '';
-    //this.request.id = sessionStorage.getItem('EMPID');
-    this.request.id = 1;
+    //this.request.empid = localStorage.getItem('employeeId');
+    this.request.empid = 1;
   }
 
   navigateHome()
@@ -42,15 +42,14 @@ export class RequestbloodComponent implements OnInit {
     this.donorService.requestForBlood(this.request).subscribe(
       data => {
         console.log("Request sent Successfully");
-        this.msg = "Blood Request Sent Successfully !!!";
-        this.donorService.setBloodGroup(this.request.bloodgroup);
-        this._router.navigate(['/searchresult'])
+        console.log(this.request.bloodGroup);
       },
       error => {
         console.log("request Failed");
         console.log(error.error);
       }
     )
+    this._router.navigate(['/searchresult']);
   }
 
   logout()

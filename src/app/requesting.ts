@@ -1,14 +1,13 @@
 export class Requesting
 {
-    id:number = 0;
+    empid:number = 0;
     name:string = '';
     address: string='';
-    bloodgroup:string = '';
-    units:number = 0;
-    mobile:string = '';
+    bloodGroup:string = '';
+    quantity:number = 0;
+    phone_num:string = '';
     gender:string = '';
     age:number = 18;
-    status:string = 'false';
 
     constructor() {}
 }
