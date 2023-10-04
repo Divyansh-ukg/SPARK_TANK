@@ -31,20 +31,25 @@ export class UserdashboardComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
-    if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
-    {
-      this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
-    }   
-    this.loggedUser = this.tempUser;
-    this.msg = '';
-    this.number = this.donorService.getTotalDonors();
-    this.totalusers = this.donorService.getTotalUsers();
-    this.totalbloodgroups = this.donorService.getTotalBloodGroups();
-    this.totalunits = this.donorService.getTotalUnits();
-    this.donationcount = this.donorService.getTotalDonationCount(this.loggedUser);
-    this.totalrequests = this.donorService.getTotalRequests(this.loggedUser);
-    this.requests = this.donorService.getRequestHistory();
+    this.activatedRoute.params.subscribe(params => {
+      this.loggedUser = params['userid'];
+    });
+
+    localStorage.setItem("employeeId",this.loggedUser);
+    // this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    // if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
+    // {
+    //   this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
+    // }   
+    // this.loggedUser = this.tempUser;
+    // this.msg = '';
+    // this.number = this.donorService.getTotalDonors();
+    // this.totalusers = this.donorService.getTotalUsers();
+    // this.totalbloodgroups = this.donorService.getTotalBloodGroups();
+    // this.totalunits = this.donorService.getTotalUnits();
+    // this.donationcount = this.donorService.getTotalDonationCount(this.loggedUser);
+    // this.totalrequests = this.donorService.getTotalRequests(this.loggedUser);
+    // this.requests = this.donorService.getRequestHistory();
     this.reloadData();
   }
 
@@ -75,14 +80,15 @@ export class UserdashboardComponent implements OnInit {
   reloadData() 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
-      this.bloodRequests = of([{name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      {name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
+      this.bloodRequests = 
+      of([{name: 'Himanshi Sinha', mobile : '1234', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '123455', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
     
       console.log(this.bloodRequests);
   }

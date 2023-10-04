@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DonorService } from '../donor.service';
-import { NgForm } from '@angular/forms';
 import { Requesting } from '../requesting';
 
 @Component({
@@ -20,7 +19,6 @@ export class RequestbloodComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    console.log('1111')
     this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
@@ -28,7 +26,8 @@ export class RequestbloodComponent implements OnInit {
     }   
     this.loggedUser = this.tempUser;
     this.msg = '';
-    console.log('2222')
+    //this.request.id = sessionStorage.getItem('EMPID');
+    this.request.id = 1;
   }
 
   navigateHome()
@@ -38,18 +37,18 @@ export class RequestbloodComponent implements OnInit {
   
   requestBlood()
   {
-    this._router.navigate(['/searchresult'])
-    // this.donorService.requestForBlood(this.request).subscribe(
-    //   data => {
-    //     console.log("Request sent Successfully");
-    //     this.msg = "Blood Request Sent Successfully !!!";
-    //     this._router.navigate(['/userdashboard']);
-    //   },
-    //   error => {
-    //     console.log("request Failed");
-    //     console.log(error.error);
-    //   }
-    // )
+    this.donorService.requestForBlood(this.request).subscribe(
+      data => {
+        console.log("Request sent Successfully");
+        this.msg = "Blood Request Sent Successfully !!!";
+        this.donorService.setBloodGroup(this.request.bloodgroup);
+        this._router.navigate(['/searchresult'])
+      },
+      error => {
+        console.log("request Failed");
+        console.log(error.error);
+      }
+    )
   }
 
   logout()
