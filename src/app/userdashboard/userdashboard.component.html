@@ -69,7 +69,7 @@
               </ng-template>
       
               <ng-template [ngIf]="history.status === 'pending'">
-                <button (click)="pendingRequest()" class="pending">Pending</button>
+                <button (click)="pendingRequest(history.bloodgroup)" class="pending">Pending</button>
               </ng-template>
               <!-- <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>
               <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>
