@@ -42,16 +42,7 @@ export class RequesthistoryComponent implements OnInit {
   navigateHome()
   {
     this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
-    console.log(this.loggedUser,"abcdedf");
     this._router.navigate(['user', this.loggedUser]);
-    // if(this.loggedUser === "admin@gmail.com"){
-    //   this.title = "Admin Dashboard";
-    //   this._router.navigate(['/loginsuccess']);
-    // }
-    // else{
-    //   this.title = "User Dashboard";
-    //   this._router.navigate(['/userdashboard']);
-    // }
   }
 
   reloadData() 
@@ -62,7 +53,7 @@ export class RequesthistoryComponent implements OnInit {
     }
     else
     {
-      this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
+    //  this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
     }
     console.log(this.requests);
   }

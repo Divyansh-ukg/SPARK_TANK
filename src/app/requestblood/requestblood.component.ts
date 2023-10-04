@@ -33,7 +33,6 @@ export class RequestbloodComponent implements OnInit {
   navigateHome()
   {
     this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
-    console.log(this.loggedUser,"abcdedf");
     this._router.navigate(['user', this.loggedUser]);
   }
   

@@ -57,12 +57,12 @@
               <img *ngIf="history.gender === 'Female' || history.gender === 'female'" class="bloodimg" [src]="'assets/img/female.png'" width="80" height="80">
             </td>
             <td>{{history.name}}</td>
-            <td>{{history.mobile}}</td>
+            <td>{{history.phone_num}}</td>
             <!-- <td>{{history.gender}}</td> -->
-            <td style="color: red; font-size: 25px;">{{history.bloodgroup}}</td>
+            <td style="color: red; font-size: 25px;">{{history.bloodGroup}}</td>
             <!-- <td>{{history.age}} years</td> -->
             <!-- <td style="color: navy;">{{history.disease}}</td> -->
-            <td>{{history.units}} units</td>
+            <td>{{history.quantity}} units</td>
             <td>
               <ng-template [ngIf]="history.status === 'accept'">
                 <button (click)="acceptRequest()" class="accepted">Accepted</button>

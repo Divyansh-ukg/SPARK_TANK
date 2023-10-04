@@ -38,15 +38,10 @@ export class RequesthistoryfromuserComponent implements OnInit {
 
   navigateHome()
   {
-    if(this.loggedUser === "admin@gmail.com"){
-      this.title = "Admin Dashboard";
-      this._router.navigate(['/loginsuccess']);
-    }
-    else{
-      this.title = "User Dashboard";
-      this._router.navigate(['/userdashboard']);
-    }
-  }
+   this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+   this._router.navigate(['user', this.loggedUser]);
+ }
+
 
   reloadData() 
   {

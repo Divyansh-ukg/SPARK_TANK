@@ -56,13 +56,10 @@ export class UserdashboardComponent implements OnInit {
 
   navigateHome()
   {
-    if(this.loggedUser === 'admin@gmail.com')
-    {
-      this._router.navigate(['/loginsuccess']);
-    }
-    else
-    this._router.navigate(['/userdashboard']);
-  }
+   this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+   this._router.navigate(['user', this.loggedUser]);
+ }
+
 
   logout()
   {
@@ -86,11 +83,12 @@ export class UserdashboardComponent implements OnInit {
   reloadData(user: string) 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
-      this.donorService.getRequestHistoryByEmail(this.loggedUser).subscribe(
+      this.donorService.getRequestHistoryByEmail(parseInt("1")).subscribe(
         data => {
           console.log("Request sent Successfully");
           this.msg = "Blood Request Sent Successfully !!!";
-          this.bloodRequests = data;
+          this.bloodRequests = of(data);
+          console.log(data);
         //  this.donorService.setBloodGroup(this.request.bloodgroup);
          // this._router.navigate(['/searchresult'])
         },

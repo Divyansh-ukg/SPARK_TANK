@@ -40,10 +40,10 @@ export class DonorService {
     return this._http.get<any>(`${NAV_URL}/requestHistory`);
   }
 
-  public getRequestHistoryByEmail(loggedUser:string): Observable<any>
+  public getRequestHistoryByEmail(loggedUser:number): Observable<any>
   {
     console.log(loggedUser,"api call");
-    return this._http.get<any>(`${NAV_URL}/requestHistory/`+loggedUser);
+    return this._http.get<any>(`${NAV_URL}/api/blood-request/emp/`+loggedUser);
   }
 
   public getUserList(): Observable<any>
