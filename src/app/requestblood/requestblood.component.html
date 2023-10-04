@@ -9,7 +9,23 @@
     <h3 class="textual"><i class="fa fa-plus" aria-hidden="true"></i> Request Blood</h3>
     <div style="text-align: center; color: green;"><b>{{msg}}</b></div>
     <form #donateForm="ngForm" (ngSubmit)="requestBlood()">
-  
+      
+      <div class="form-group">
+        <label for="patientname">Patient Name: <b class="text-danger">*</b></label>
+        <input type="text" class="form-control" placeholder="enter Patient name" name="patientname" [(ngModel)]="request.name" required 
+        #patientname="ngModel"
+        [class.is-invalid]="patientname.invalid && patientname.touched">
+       <small class="text-danger" [class.d-none]="patientname.valid || patientname.untouched"><b>required field</b></small>
+    </div>
+
+    <div class="form-group">
+      <label for="patientaddress">Patient Address: <b class="text-danger">*</b></label>
+      <input type="text" class="form-control" placeholder="enter Patient address" name="patientaddress" [(ngModel)]="request.address" required 
+      #patientaddress="ngModel"
+      [class.is-invalid]="patientaddress.invalid && patientaddress.touched">
+     <small class="text-danger" [class.d-none]="patientaddress.valid || patientaddress.untouched"><b>required field</b></small>
+  </div>
+
     <div class="form-group">
       <label for="bloodgroup">Blood Group: <b class="text-danger">*</b></label>
       <select class="form-control" placeholder="enter blood group" name="bloodgroup" [(ngModel)]="request.bloodgroup" required 
@@ -37,15 +53,7 @@
     </select>
    <small class="text-danger" [class.d-none]="units.valid || units.untouched"><b>required field</b></small>
   </div>
-  
-  <!-- <div class="form-group">
-    <label for="disease">Disease:</label>
-    <input type="text" class="form-control" placeholder="enter disease name" name="disease" [(ngModel)]="request.disease" 
-    #disease="ngModel"
-    [class.is-invalid]="disease.invalid && disease.touched">
-   <small class="text-danger" [class.d-none]="disease.valid || disease.untouched"><b>required field</b></small>
-  </div> -->
-  
+
   <div class="form-group">
     <label for="mobile">Mobile Number: <b class="text-danger">*</b></label>
     <input type="tel" class="form-control" placeholder="enter mobile number" name="mobile" [(ngModel)]="request.mobile" required 

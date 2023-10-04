@@ -12,6 +12,17 @@ const NAV_URL = environment.apiURL;
   providedIn: 'root'
 })
 export class DonorService {
+
+  private bloodGroup: any;
+
+  public setBloodGroup(data: string)
+  {
+    this.bloodGroup = data;
+  }
+
+  public getBloodGroup(): any {
+    return this.bloodGroup;
+  }
   
   user = new User();
   
@@ -106,5 +117,7 @@ export class DonorService {
   {
     return this._http.get(`${NAV_URL}/getTotalDonationCount/`+loggedUser);
   }
+
+  
 
 }
