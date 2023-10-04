@@ -64,12 +64,12 @@
             <!-- <td style="color: navy;">{{history.disease}}</td> -->
             <td>{{history.quantity}} units</td>
             <td>
-              <ng-template [ngIf]="history.status === 'accept'">
+              <ng-template [ngIf]="history.status.toLowerCase() === 'accept'">
                 <button (click)="acceptRequest()" class="accepted">Accepted</button>
               </ng-template>
       
-              <ng-template [ngIf]="history.status === 'pending'">
-                <button (click)="pendingRequest(history.bloodgroup)" class="pending">Pending</button>
+              <ng-template [ngIf]="history.status.toLowerCase() === 'pending'">
+                <button (click)="pendingRequest(history)" class="pending">Pending</button>
               </ng-template>
               <!-- <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>
               <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>

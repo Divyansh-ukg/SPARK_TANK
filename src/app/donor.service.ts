@@ -8,12 +8,15 @@ import { User } from './user';
 
 const NAV_URL = environment.apiURL;
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class DonorService {
 
   private bloodGroup: any;
+
+  public requesterData = {id : '', empid: '', bloodGroup: ''};
 
   public setBloodGroup(data: string)
   {
@@ -24,8 +27,8 @@ export class DonorService {
     return this.bloodGroup;
   }
 
-  public getDataByBloodGroup(): Observable<any> {
-    return this._http.get<any>(`${NAV_URL}/api/blood-request/find/` + this.getBloodGroup());
+  public getDataByBloodGroup(bloodGroup: string): Observable<any> {
+    return this._http.get<any>(`${NAV_URL}/api/blood-request/find/` + bloodGroup? bloodGroup :this.getBloodGroup());
   }
   
   user = new User();
@@ -123,6 +126,11 @@ export class DonorService {
     return this._http.get(`${NAV_URL}/getTotalDonationCount/`+loggedUser);
   }
 
+
+public sendDataForNotification(requestData : any) : Observable<any>
+  {
+    return this._http.post<any>(`${NAV_URL}/api/blood-request/send`,requestData);
+  }
   
 
 }

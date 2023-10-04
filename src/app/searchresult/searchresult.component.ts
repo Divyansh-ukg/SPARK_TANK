@@ -25,7 +25,7 @@ export class SearchresultComponent implements OnInit {
   constructor(private donorService: DonorService) { }
 
   ngOnInit(): void {
-    this.donorService.getDataByBloodGroup().subscribe((data) => {
+    this.donorService.getDataByBloodGroup(this.donorService.requesterData.bloodGroup).subscribe((data) => {
       this.searchBloodGroupResult = data;
     }, ((error) => {
       this.searchBloodGroupResult = [
@@ -104,16 +104,24 @@ export class SearchresultComponent implements OnInit {
 
 
   sendNotification(){
-    let selectedResults: resultDataInterface[] = [];
+    // let selectedResults: resultDataInterface[] = [];
+    let selectedEmpID: any =  [];
     this.searchBloodGroupResult.forEach((item: resultDataInterface) => {
       if(item.selected){
-        selectedResults.push(item);
+        // selectedResults.push(item);
+        selectedEmpID.push(item.id)
       }
     });
-    if (selectedResults.length === 0) {
+    if (selectedEmpID.length === 0) {
       alert('no item selected');
       return;
     }
-    //TODO: will send data 
+    const request = {
+      bloodRequestId: this.donorService.requesterData.id,
+      requesterEmpId: this.donorService.requesterData.empid,
+      donorEmpId: selectedEmpID
+    }
+    console.log('request',request)
+    this.donorService.sendDataForNotification(request);
   }
 }
