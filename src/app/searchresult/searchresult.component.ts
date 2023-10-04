@@ -9,6 +9,7 @@ interface resultDataInterface {
   address: string;
   bloodGroup: string;
   selected?: boolean;
+  gender:string
 }
 
 @Component({
@@ -19,249 +20,60 @@ interface resultDataInterface {
 export class SearchresultComponent implements OnInit {
   selectedDataToSend =[];
   searchBloodGroupResult: resultDataInterface[] = [
-
     {
-        "id": 2,
-        "name": "raj",
-        "password": "test",
-        "phoneNum": 23423,
-        "address": "Noida",
-        "bloodGroup": "O+"
-    },
-
-    {
-
-        "id": 4,
-
-        "name": "divyansh",
-
-        "password": "test",
-
-        "phoneNum": 34534,
-
-        "address": "Noida",
-
-        "bloodGroup": "O-"
-
-    },
-    {
-
-      "id": 2,
-
-      "name": "raj",
-
+      "id": 0,
+      "name": "aditya",
       "password": "test",
-
-      "phoneNum": 23423,
-
+      "phoneNum": 9922932245,
       "address": "Noida",
-
-      "bloodGroup": "O+"
-
-  },
-
-  {
-
-      "id": 4,
-
-      "name": "divyansh",
-
-      "password": "test",
-
-      "phoneNum": 34534,
-
-      "address": "Noida",
-
-      "bloodGroup": "O-"
-
+      "bloodGroup": "B+",
+      "gender": "male"
   },
   {
-
+      "id": 1,
+      "name": "himanshi",
+      "password": "test",
+      "phoneNum": 34543,
+      "address": "Noida",
+      "bloodGroup": "O+",
+      "gender": "female"
+  },
+  {
     "id": 2,
-
-    "name": "raj",
-
+    "name": "Ashutosh",
     "password": "test",
-
-    "phoneNum": 23423,
-
+    "phoneNum": 34543,
     "address": "Noida",
-
-    "bloodGroup": "O+"
-
-},
-
-{
-
-    "id": 4,
-
-    "name": "divyansh",
-
-    "password": "test",
-
-    "phoneNum": 34534,
-
-    "address": "Noida",
-
-    "bloodGroup": "O-"
-
+    "bloodGroup": "O+",
+    "gender": "male"
 },
 {
-
-  "id": 2,
-
-  "name": "raj",
-
+  "id": 0,
+  "name": "aditya",
   "password": "test",
-
-  "phoneNum": 23423,
-
+  "phoneNum": 9922932245,
   "address": "Noida",
-
-  "bloodGroup": "O+"
-
-},
-
-{
-
-  "id": 4,
-
-  "name": "divyansh",
-
-  "password": "test",
-
-  "phoneNum": 34534,
-
-  "address": "Noida",
-
-  "bloodGroup": "O-"
-
+  "bloodGroup": "B+",
+  "gender": "male"
 },
 {
-
-  "id": 2,
-
-  "name": "raj",
-
+  "id": 1,
+  "name": "himanshi",
   "password": "test",
-
-  "phoneNum": 23423,
-
+  "phoneNum": 34543,
   "address": "Noida",
-
-  "bloodGroup": "O+"
-
-},
-
-{
-
-  "id": 4,
-
-  "name": "divyansh",
-
-  "password": "test",
-
-  "phoneNum": 34534,
-
-  "address": "Noida",
-
-  "bloodGroup": "O-"
-
+  "bloodGroup": "O+",
+  "gender": "female"
 },
 {
-
-  "id": 2,
-
-  "name": "raj",
-
-  "password": "test",
-
-  "phoneNum": 23423,
-
-  "address": "Noida",
-
-  "bloodGroup": "O+"
-
-},
-
-{
-
-  "id": 4,
-
-  "name": "divyansh",
-
-  "password": "test",
-
-  "phoneNum": 34534,
-
-  "address": "Noida",
-
-  "bloodGroup": "O-"
-
-},
-{
-
-  "id": 2,
-
-  "name": "raj",
-
-  "password": "test",
-
-  "phoneNum": 23423,
-
-  "address": "Noida",
-
-  "bloodGroup": "O+"
-
-},
-
-{
-
-  "id": 4,
-
-  "name": "divyansh",
-
-  "password": "test",
-
-  "phoneNum": 34534,
-
-  "address": "Noida",
-
-  "bloodGroup": "O-"
-
-},
-{
-
-  "id": 2,
-
-  "name": "raj",
-
-  "password": "test",
-
-  "phoneNum": 23423,
-
-  "address": "Noida",
-
-  "bloodGroup": "O+"
-
-},
-
-{
-
-  "id": 4,
-
-  "name": "divyansh",
-
-  "password": "test",
-
-  "phoneNum": 34534,
-
-  "address": "Noida",
-
-  "bloodGroup": "O-"
-
+"id": 2,
+"name": "Ashutosh",
+"password": "test",
+"phoneNum": 34543,
+"address": "Noida",
+"bloodGroup": "O+",
+"gender": "male"
 }
-
 ]
 
   constructor() { }
@@ -276,8 +88,17 @@ export class SearchresultComponent implements OnInit {
     });
   }
 
+  selectedRecord(e: any, result: any) {
+    this.searchBloodGroupResult.forEach((item) => {
+      if(item.id === result.id){
+        item.selected = result.selected;
+      }
+    })
+  }
+
+
   sendNotification(){
-    const selectedResults = [];
+    let selectedResults: resultDataInterface[] = [];
     this.searchBloodGroupResult.forEach((item: resultDataInterface) => {
       if(item.selected){
         selectedResults.push(item);
