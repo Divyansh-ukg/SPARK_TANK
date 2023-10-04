@@ -24,11 +24,11 @@ export class RequesthistoryComponent implements OnInit {
   ngOnInit(): void 
   {
     this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
-    if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
-    {
-      this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
-    }   
-    this.loggedUser = this.tempUser;
+    // if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
+    // {
+    //   this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
+    // }   
+    // this.loggedUser = this.tempUser;
     this.msg = '';
     if(this.loggedUser === "admin@gmail.com"){
       this.title = "Admin Dashboard";
@@ -41,14 +41,17 @@ export class RequesthistoryComponent implements OnInit {
 
   navigateHome()
   {
-    if(this.loggedUser === "admin@gmail.com"){
-      this.title = "Admin Dashboard";
-      this._router.navigate(['/loginsuccess']);
-    }
-    else{
-      this.title = "User Dashboard";
-      this._router.navigate(['/userdashboard']);
-    }
+    this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+    console.log(this.loggedUser,"abcdedf");
+    this._router.navigate(['user', this.loggedUser]);
+    // if(this.loggedUser === "admin@gmail.com"){
+    //   this.title = "Admin Dashboard";
+    //   this._router.navigate(['/loginsuccess']);
+    // }
+    // else{
+    //   this.title = "User Dashboard";
+    //   this._router.navigate(['/userdashboard']);
+    // }
   }
 
   reloadData() 
