@@ -20,68 +20,71 @@ interface resultDataInterface {
 })
 export class SearchresultComponent implements OnInit {
   selectedDataToSend =[];
-  searchBloodGroupResult: resultDataInterface[] = [
+  searchBloodGroupResult: resultDataInterface[] = []
+
+  constructor(private donorService: DonorService) { }
+
+  ngOnInit(): void {
+    this.donorService.getDataByBloodGroup().subscribe((data) => {
+      this.searchBloodGroupResult = data;
+    }, ((error) => {
+      this.searchBloodGroupResult = [
+        {
+          "id": 0,
+          "name": "aditya",
+          "password": "test",
+          "phoneNum": 9922932245,
+          "address": "Noida",
+          "bloodGroup": "B+",
+          "gender": "male"
+      },
+      {
+          "id": 1,
+          "name": "himanshi",
+          "password": "test",
+          "phoneNum": 34543,
+          "address": "Noida",
+          "bloodGroup": "O+",
+          "gender": "female"
+      },
+      {
+        "id": 2,
+        "name": "Ashutosh",
+        "password": "test",
+        "phoneNum": 34543,
+        "address": "Noida",
+        "bloodGroup": "O+",
+        "gender": "male"
+    },
     {
-      "id": 0,
+      "id": 3,
       "name": "aditya",
       "password": "test",
       "phoneNum": 9922932245,
       "address": "Noida",
       "bloodGroup": "B+",
       "gender": "male"
-  },
-  {
-      "id": 1,
+    },
+    {
+      "id": 4,
       "name": "himanshi",
       "password": "test",
       "phoneNum": 34543,
       "address": "Noida",
       "bloodGroup": "O+",
       "gender": "female"
-  },
-  {
-    "id": 2,
+    },
+    {
+    "id": 5,
     "name": "Ashutosh",
     "password": "test",
     "phoneNum": 34543,
     "address": "Noida",
     "bloodGroup": "O+",
     "gender": "male"
-},
-{
-  "id": 3,
-  "name": "aditya",
-  "password": "test",
-  "phoneNum": 9922932245,
-  "address": "Noida",
-  "bloodGroup": "B+",
-  "gender": "male"
-},
-{
-  "id": 4,
-  "name": "himanshi",
-  "password": "test",
-  "phoneNum": 34543,
-  "address": "Noida",
-  "bloodGroup": "O+",
-  "gender": "female"
-},
-{
-"id": 5,
-"name": "Ashutosh",
-"password": "test",
-"phoneNum": 34543,
-"address": "Noida",
-"bloodGroup": "O+",
-"gender": "male"
-}
-]
-
-  constructor(private donorService: DonorService) { }
-
-  ngOnInit(): void {
-    //TODO:get results from blood group
-    this.donorService.getDataByBloodGroup(this.donorService.getBloodGroup());
+    }
+    ]
+    }));
 
   }
 

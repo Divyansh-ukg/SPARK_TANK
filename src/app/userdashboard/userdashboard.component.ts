@@ -70,7 +70,8 @@ export class UserdashboardComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
-  pendingRequest(){
+  pendingRequest(bloodgroup: string){
+    this.donorService.setBloodGroup(bloodgroup);
     this._router.navigate(['/searchresult']);
   }
 
