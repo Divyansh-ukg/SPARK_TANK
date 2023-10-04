@@ -3,23 +3,28 @@
     <div class="panel-heading">
         <h2
             style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 3%;">
-            Search Result
+            Available Donor
         </h2>
     </div>
-    <div>
+    <div style="text-align: left; margin-left: 8px; font-size: 20px; margin-bottom: 8px;"> Select All
           <input class="checkbox"  (change)="selectAll($event)" type="checkbox">
     </div>
     <div class="card-container">
         <div class="card" *ngFor="let result of searchBloodGroupResult" id="bloodCards">
             <mat-card>
-                <mat-card-content>
+                
+                <div class="mat-cell"><input class="checkbox" [(ngModel)]="result.selected"  (change)="selectedRecord($event,result)"  type="checkbox"></div>
+                <mat-card-header>
+                    <a><img *ngIf="result.gender === 'Male' || result.gender === 'male'" class="bloodimg" [src]="'assets/img/male.png'" width="120" height="120" style="margin-left: 72px;"></a>
+                    <a><img *ngIf="result.gender === 'Female' || result.gender === 'female'" class="bloodimg" [src]="'assets/img/female.png'" width="120" height="120" style="margin-left: 72px;"></a>
+                  </mat-card-header>
+                <!-- <mat-card-content> -->
                     <mat-card-content>
-                        <div class="mat-cell"><input class="checkbox" [(ngModel)]="result.selected"  (change)="selectedRecord($event,result)"  type="checkbox"></div>
                         <b style="color: navy;"> Name : </b> <b>{{result.name}}</b> 
                         <br>
                         <b style="color: navy;">Blood Group : </b><b class="element" style="color: red;"> {{result.bloodGroup}}</b>
                         <br>
-                        <b style="color: navy;">Gender : </b><b class="element"> {{result.gender}}</b>
+                        <b style="color: navy;">Emp ID : </b><b class="element"> {{result.id}}</b>
                         <br>
                         <b style="color: navy;">Contact : </b><b class="element"> {{result.phoneNum}}</b>
                         <br>
@@ -40,7 +45,7 @@
                             <div class="mat-cell"><input class="checkbox" [(ngModel)]="result.selected"  (change)="selectedRecord($event,result)"  type="checkbox"></div>
                         </div>
                     </div> -->
-                </mat-card-content>
+                <!-- </mat-card-content> -->
             </mat-card>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DonorService } from '../donor.service';
 
 
 interface resultDataInterface {
@@ -48,7 +49,7 @@ export class SearchresultComponent implements OnInit {
     "gender": "male"
 },
 {
-  "id": 0,
+  "id": 3,
   "name": "aditya",
   "password": "test",
   "phoneNum": 9922932245,
@@ -57,7 +58,7 @@ export class SearchresultComponent implements OnInit {
   "gender": "male"
 },
 {
-  "id": 1,
+  "id": 4,
   "name": "himanshi",
   "password": "test",
   "phoneNum": 34543,
@@ -66,7 +67,7 @@ export class SearchresultComponent implements OnInit {
   "gender": "female"
 },
 {
-"id": 2,
+"id": 5,
 "name": "Ashutosh",
 "password": "test",
 "phoneNum": 34543,
@@ -76,9 +77,11 @@ export class SearchresultComponent implements OnInit {
 }
 ]
 
-  constructor() { }
+  constructor(private donorService: DonorService) { }
 
   ngOnInit(): void {
+    //TODO:get results from blood group
+    this.donorService.getDataByBloodGroup(this.donorService.getBloodGroup());
 
   }
 

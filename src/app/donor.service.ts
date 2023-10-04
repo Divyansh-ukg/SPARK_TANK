@@ -23,6 +23,10 @@ export class DonorService {
   public getBloodGroup(): any {
     return this.bloodGroup;
   }
+
+  public getDataByBloodGroup(bloodGroup: string): any {
+    // TODO: this method will return data based on bloodgroup
+  }
   
   user = new User();
   
