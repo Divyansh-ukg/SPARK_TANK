@@ -36,7 +36,7 @@ export class RequesthistoryComponent implements OnInit {
 
   reloadData() 
   {
-    this.requests = this.donorService.getRequestHistory(2);
+    this.requests = this.donorService.getIncomingRequestHistory(this.donorService.userID);
   }
 
   acceptRequest(id : number)

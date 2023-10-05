@@ -16,7 +16,9 @@ export class DonorService {
 
   private bloodGroup: any;
 
-  public userID = 4;
+  public userID = 1;
+
+  public userId_2 = 2;
 
   public requesterData = {id : '', empid: '', bloodGroup: ''};
 
@@ -43,7 +45,7 @@ export class DonorService {
   }
 
 
-  public getRequestHistory(loggedUser:number): Observable<any>
+  public getIncomingRequestHistory(loggedUser:number): Observable<any>
   {
     return this._http.get<any>(`${NAV_URL}/api/blood-request/incoming/`+loggedUser);
   }

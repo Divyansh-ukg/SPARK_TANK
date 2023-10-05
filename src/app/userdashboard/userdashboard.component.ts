@@ -26,8 +26,8 @@ export class UserdashboardComponent implements OnInit {
   totalbloodgroups : Observable<any> | undefined;
   totalunits : Observable<any> | undefined;
   bloodRequests : Observable<any> | undefined;
-  totalRequestHistoryCount: Observable<any> | undefined;
-  totalIncomingRequest: Observable<any> | undefined;
+  totalRequestHistoryCount: Observable<any> | undefined =  0 || undefined;
+  totalIncomingRequest: Observable<any> | undefined  = 0 || undefined;
 
   constructor(private _router : Router, private donorService: DonorService, private activatedRoute: ActivatedRoute) { }
 
@@ -60,13 +60,11 @@ export class UserdashboardComponent implements OnInit {
 
     this.donorService.getRequestHistoryByEmail(this.donorService.userID).subscribe(data=>{
       this.totalRequestHistoryCount = data.length;
-      console.log("hello 1234567",data)
     });
 
   
-    this.donorService.getRequestHistory(this.donorService.userID).subscribe(data=>{
+    this.donorService.getIncomingRequestHistory(this.donorService.userID).subscribe(data=>{
       this.totalIncomingRequest = data.length;
-      console.log("hello 1234567",data)
     });
 
   }
@@ -81,6 +79,9 @@ export class UserdashboardComponent implements OnInit {
   this._router.navigate(['/requesthistoryfromuser'])
  }
 
+ navigateToIncomingRequestHistory(){
+  this._router.navigate(['/incomingrequest'])
+ }
 
   logout()
   {
