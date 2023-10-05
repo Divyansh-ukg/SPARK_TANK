@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DonorService } from '../donor.service';
+import { Router } from '@angular/router';
 
 
 interface resultDataInterface {
@@ -22,7 +23,7 @@ export class SearchresultComponent implements OnInit {
   selectedDataToSend =[];
   searchBloodGroupResult: resultDataInterface[] = []
 
-  constructor(private donorService: DonorService) { }
+  constructor(private donorService: DonorService, private _router: Router) { }
 
   ngOnInit(): void {
     this.donorService.getDataByBloodGroup(this.donorService.requesterData.bloodGroup).subscribe((data) => {
@@ -123,6 +124,7 @@ export class SearchresultComponent implements OnInit {
     }
     this.donorService.sendDataForNotification(request).subscribe(() => {
       console.log('email sent successfully')
+      this._router.navigate(['/userdashboard']);
     },error => {
       console.log('email error')
     });
