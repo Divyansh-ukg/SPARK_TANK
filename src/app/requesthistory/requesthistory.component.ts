@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DonorService } from '../donor.service';
 import { Requesting } from '../requesting';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-requesthistory',
@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
 export class RequesthistoryComponent implements OnInit {
 
   loggedUser = 0;
-  tempUser = 0;
+  tempUser = '';
   msg = '';
   title = '';
   requests : Observable<any> | undefined;
@@ -23,14 +23,9 @@ export class RequesthistoryComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    //this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
-    // if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
-    // {
-    //   this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
-    // }   
-    this.loggedUser = this.tempUser;
-    this.msg = '';
-    this.reloadData(this.loggedUser);
+    //this.loggedUser = localStorage.getItem('employeeId');
+    this.loggedUser = 2;
+    this.reloadData();
   }
 
   navigateHome()
@@ -39,48 +34,13 @@ export class RequesthistoryComponent implements OnInit {
     this._router.navigate(['user', this.loggedUser]);
   }
 
-  // reloadData() 
-  // {
-  //   this.requests = this.donorService.getRequestHistory(2);
-  //   console.log(this.requests);
-  //   //requests
-  // }
-
-  reloadData(user: number) 
+  reloadData() 
   {
-      // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
-      this.donorService.getRequestHistory(this.donorService.userID).subscribe(
-        data => {
-          console.log("Request sent Successfully");
-          this.msg = "Blood Request Sent Successfully !!!";
-          this.requests = of(data);
-          console.log(data);
-        //  this.donorService.setBloodGroup(this.request.bloodgroup);
-         // this._router.navigate(['/searchresult'])
-        },
-        error => {
-          console.log("request Failed");
-          console.log(error.error);
-        }
-      )
-      // this.bloodRequests = 
-      // of([{name: 'Himanshi Sinha', mobile : '1234', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      // {name: 'Himanshi Sinha', mobile : '123455', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
-      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
-      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
-    
-      // console.log(this.bloodRequests);
-      
+    this.requests = this.donorService.getRequestHistory(2);
   }
-
 
   acceptRequest(id : number)
   {
-    console.log("function called");
     this.donorService.acceptRequestForBlood(id,this.loggedUser).subscribe(
       data => {
         console.log("Request sent Successfully");
@@ -90,7 +50,7 @@ export class RequesthistoryComponent implements OnInit {
         console.log(error.error);
       }
     )
-    this.reloadData(id);
+    this.reloadData();
   }
 
   logout()
