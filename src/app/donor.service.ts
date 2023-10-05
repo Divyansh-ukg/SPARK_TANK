@@ -28,7 +28,7 @@ export class DonorService {
   }
 
   public getDataByBloodGroup(bloodGroup: string): Observable<any> {
-    return this._http.get<any>(`${NAV_URL}/api/blood-request/find/` + bloodGroup? bloodGroup :this.getBloodGroup());
+    return this._http.get<any>(`${NAV_URL}/api/blood-request/find/` + bloodGroup);
   }
   
   user = new User();

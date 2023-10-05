@@ -117,11 +117,14 @@ export class SearchresultComponent implements OnInit {
       return;
     }
     const request = {
-      bloodRequestId: this.donorService.requesterData.id,
-      requesterEmpId: this.donorService.requesterData.empid,
-      donorEmpId: selectedEmpID
+      bloodRequestId: this.donorService.requesterData.id ? this.donorService.requesterData.id : 8,
+      requesterEmpId: this.donorService.requesterData.empid ? this.donorService.requesterData.empid : 3,
+      donorEmpId: selectedEmpID ? selectedEmpID: [2,3,4,5]
     }
-    console.log('request',request)
-    this.donorService.sendDataForNotification(request);
+    this.donorService.sendDataForNotification(request).subscribe(() => {
+      console.log('1111')
+    },error => {
+      console.log('222')
+    });
   }
 }
