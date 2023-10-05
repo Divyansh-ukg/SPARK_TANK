@@ -40,4 +40,10 @@ export class LoginsuccessComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
+  navigateHome()
+  {
+   this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+   this._router.navigate(['user', this.loggedUser]);
+ }
+
 }
