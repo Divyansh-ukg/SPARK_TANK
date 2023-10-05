@@ -89,10 +89,12 @@ export class DonorService {
     return this._http.put<any>(`${NAV_URL}/updateuser`,user)
   }
   
-  public acceptRequestForBlood(loggedUser : string) : Observable<any>
+  public acceptRequestForBlood(id : number, loggedUser : number) : Observable<any>
   {
-    return this._http.get(`${NAV_URL}/acceptstatus/`+loggedUser);
+    return this._http.get(`${NAV_URL}/api/blood-request/bdr/update/empid/`+loggedUser+'/brid/'+id);
   }
+
+  //'http://localhost:8080/api/blood-request/bdr/update/empid/2/brid/8
 
   public rejectRequestForBlood(loggedUser : string) : Observable<any>
   {

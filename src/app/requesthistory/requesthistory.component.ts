@@ -12,8 +12,8 @@ import { Observable, of } from 'rxjs';
 })
 export class RequesthistoryComponent implements OnInit {
 
-  loggedUser = '';
-  tempUser = '';
+  loggedUser = 0;
+  tempUser = 0;
   msg = '';
   title = '';
   requests : Observable<any> | undefined;
@@ -23,7 +23,7 @@ export class RequesthistoryComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+    //this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
     // if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     // {
     //   this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
@@ -35,7 +35,7 @@ export class RequesthistoryComponent implements OnInit {
 
   navigateHome()
   {
-    this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+    //this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
     this._router.navigate(['user', this.loggedUser]);
   }
 
@@ -46,7 +46,7 @@ export class RequesthistoryComponent implements OnInit {
   //   //requests
   // }
 
-  reloadData(user: string) 
+  reloadData(user: number) 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
       this.donorService.getRequestHistory(this.donorService.userID).subscribe(
@@ -78,23 +78,19 @@ export class RequesthistoryComponent implements OnInit {
   }
 
 
-  acceptRequest(curremail : string)
+  acceptRequest(id : number)
   {
-    this.responses = this.donorService.acceptRequestForBlood(curremail);
-    $("#acceptbtn").hide();
-    $("#rejectbtn").hide();
-    $("#acceptedbtn").show();
-    $("#rejectedbtn").hide();
-    $("acceptbtn").val("Accepted");
-  }
-
-  rejectRequest(curremail : string)
-  {
-    this.responses = this.donorService.rejectRequestForBlood(curremail);
-    $("#acceptbtn").hide();
-    $("#rejectbtn").hide();
-    $("#acceptedbtn").hide();
-    $("#rejectedbtn").show();
+    console.log("function called");
+    this.donorService.acceptRequestForBlood(id,this.loggedUser).subscribe(
+      data => {
+        console.log("Request sent Successfully");
+      },
+      error => {
+        console.log("request Failed");
+        console.log(error.error);
+      }
+    )
+    this.reloadData(id);
   }
 
   logout()
