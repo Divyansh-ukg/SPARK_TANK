@@ -6,48 +6,73 @@
   </div>
 
   <div class="panel panel-primary">
+    <!-- <div class="panel-heading">
+      <h2 style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 3%;">Overall Request History</h2>
+    </div> -->
+  
+<div class="row" style="padding: 15px;">
+  <div class="panel panel-primary">
     <div class="panel-heading">
       <h2 style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 3%;">Overall Request History</h2>
     </div>
-    <div class="panel-body">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Idendity</th>
-            <th>Patient Name</th>
-            <th>Mobile</th>
-            <th>Gender</th>
-            <th>Blood Group</th>
-            <th>Required Units</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let history of requests | async">
-            <td><img *ngIf="history.gender === 'Male' || history.gender === 'male'" class="bloodimg" [src]="'assets/img/male.png'" width="80" height="80">
+    <div class="panel-body" style="height: 348px;
+    overflow: scroll;">
+     <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Idendity</th>
+          <th>Patient Name</th>
+          <th>Mobile</th>
+          <!-- <th>Gender</th> -->
+          <th>Blood Group</th>
+          <th>Required Units</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Use ngIf to check if there is data in bloodRequests -->
+        <ng-container *ngIf="(requests | async) as bloodRequestsData; else noDataTemplate">
+          <tr *ngFor="let history of bloodRequestsData">
+            <td>
+              <img *ngIf="history.gender === 'Male' || history.gender === 'male'" class="bloodimg" [src]="'assets/img/male.png'" width="80" height="80">
               <img *ngIf="history.gender === 'Female' || history.gender === 'female'" class="bloodimg" [src]="'assets/img/female.png'" width="80" height="80">
-              </td>
+            </td>
             <td>{{history.name}}</td>
-            <td>{{history.mobile}}</td>
-            <td>{{history.gender}}</td>
-            <td style="color: red; font-size: 25px;">{{history.bloodgroup}}</td>
+            <td>{{history.phone_num}}</td>
+            <!-- <td>{{history.gender}}</td> -->
+            <td style="color: red; font-size: 25px;">{{history.bloodGroup}}</td>
             <!-- <td>{{history.age}} years</td> -->
             <!-- <td style="color: navy;">{{history.disease}}</td> -->
-            <td>{{history.units}} units</td>
+            <td>{{history.quantity}} units</td>
             <td>
-              <ng-template [ngIf]="history.status === 'accept'">
-              <button (click)="acceptRequest()" class="accepted">Accepted</button></ng-template>
-
-              <ng-template [ngIf]="history.status === 'pending'">
-              <button (click)="pendingRequest()" class="pending">Pending</button></ng-template>
-                <!-- <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>
-                <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>
-                <div *ngIf="history.status === 'reject' && loggedUser !== 'admin@gmail.com'" class="rejected">Rejected</div> -->
-              </td>
+              <ng-template [ngIf]="history.status.toLowerCase() === 'accept'">
+                <button (click)="acceptRequest()" class="accepted">Accepted</button>
+              </ng-template>
+      
+              <ng-template [ngIf]="history.status.toLowerCase() === 'pending'">
+                <button (click)="pendingRequest(history.bloodgroup)" class="pending">Pending</button>
+              </ng-template>
+              <!-- <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>
+              <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>
+              <div *ngIf="history.status === 'reject' && loggedUser !== 'admin@gmail.com'" class="rejected">Rejected</div> -->
+            </td>
           </tr>
-        </tbody>
-      </table>
+        </ng-container>
+      </tbody>
+    </table>
+    
+    <!-- Show a button when there is no data in bloodRequests -->
+    <ng-template #noDataTemplate>
+      <tr>
+        <td colspan="6">
+          <button (click)="navigateToCreateRequest()">Please create a Request</button>
+        </td>
+      </tr>
+    </ng-template>
+    
     </div>
+  </div>
+</div>
   </div>
 
 <br><br><br><br><br><br><br><br>

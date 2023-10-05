@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DonorService } from '../donor.service';
 import { Requesting } from '../requesting';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-requesthistory',
@@ -28,9 +28,9 @@ export class RequesthistoryComponent implements OnInit {
     // {
     //   this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
     // }   
-    // this.loggedUser = this.tempUser;
+    this.loggedUser = this.tempUser;
     this.msg = '';
-    this.reloadData();
+    this.reloadData(this.loggedUser);
   }
 
   navigateHome()
@@ -39,11 +39,44 @@ export class RequesthistoryComponent implements OnInit {
     this._router.navigate(['user', this.loggedUser]);
   }
 
-  reloadData() 
+  // reloadData() 
+  // {
+  //   this.requests = this.donorService.getRequestHistory(2);
+  //   console.log(this.requests);
+  //   //requests
+  // }
+
+  reloadData(user: string) 
   {
-    this.requests = this.donorService.getRequestHistory(2);
-    console.log(this.requests);
+      // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
+      this.donorService.getRequestHistory(parseInt("4")).subscribe(
+        data => {
+          console.log("Request sent Successfully");
+          this.msg = "Blood Request Sent Successfully !!!";
+          this.requests = of(data);
+          console.log(data);
+        //  this.donorService.setBloodGroup(this.request.bloodgroup);
+         // this._router.navigate(['/searchresult'])
+        },
+        error => {
+          console.log("request Failed");
+          console.log(error.error);
+        }
+      )
+      // this.bloodRequests = 
+      // of([{name: 'Himanshi Sinha', mobile : '1234', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      // {name: 'Himanshi Sinha', mobile : '123455', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'},
+      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'},
+      // {name: 'Himanshi Sinha', mobile : '12345', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'pending'}])
+    
+      // console.log(this.bloodRequests);
+      
   }
+
 
   acceptRequest(curremail : string)
   {

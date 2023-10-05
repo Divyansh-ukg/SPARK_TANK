@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit {
   
   navigateHome()
   {
-    this.router.navigate(['/user/1234']);
-  }
+   this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+   this.router.navigate(['user', this.loggedUser]);
+ }
 
 }

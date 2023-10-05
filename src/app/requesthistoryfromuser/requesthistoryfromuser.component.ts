@@ -20,7 +20,7 @@ export class RequesthistoryfromuserComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.tempUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
     if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
     {
       this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
@@ -33,7 +33,7 @@ export class RequesthistoryfromuserComponent implements OnInit {
     else{
       this.title = "User Dashboard";
     }
-    this.reloadData();
+    this.reloadData(this.loggedUser);
   }
 
   navigateHome()
@@ -43,22 +43,46 @@ export class RequesthistoryfromuserComponent implements OnInit {
  }
 
 
-  reloadData() 
-  {
-      // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
-      this.requests = of([{name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'}])
+  // reloadData() 
+  // {
+  //     // this.requests = this.donorService.getRequestHistoryByEmail(this.loggedUser);
+  //     this.requests = of([{name: 'Himanshi Sinha', mobile : '9876543210', gender: 'Female', bloodgroup: 'B+', age: '28', units: '4', status: 'accept'}])
     
-      console.log(this.requests);
+  //     console.log(this.requests);
+  // }
+
+
+  reloadData(user: string) 
+  {
+      // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
+      this.donorService.getRequestHistoryByEmail((4)).subscribe(
+        data => {
+          console.log("Request sent Successfully");
+          this.msg = "Blood Request Sent Successfully !!!";
+          this.requests = of(data);
+          console.log("request history from user",data);
+        },
+        error => {
+          console.log("request Failed");
+          console.log(error.error);
+        }
+      )
   }
+  navigateToCreateRequest(){
+    this._router.navigate(['/requestblood'])
+  }
+  pendingRequest(data: any){
+    this.donorService.requesterData = data;
+    this.donorService.setBloodGroup(data.bloodGroup);
+    this._router.navigate(['/searchresult']);
+  }
+
+
 
   logout()
   {
     sessionStorage.clear();
     this._router.navigate(['/login']);
-  }
-
-  pendingRequest(){
-    this._router.navigate(['/searchresult']);
   }
 
   acceptRequest(){

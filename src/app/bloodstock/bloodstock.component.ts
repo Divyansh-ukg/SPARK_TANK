@@ -42,41 +42,35 @@ export class BloodstockComponent {
       "count": 1
     }
   ];
-  // ngOnInit(): void 
-  // {
-  //   this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
-  //   if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
-  //   {
-  //     this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
-  //   }   
-  //   this.loggedUser = this.tempUser;
+  ngOnInit(): void 
+  {
+    this.tempUser = JSON.stringify(sessionStorage.getItem('employeeId')|| '{}');
+    if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
+    {
+      this.tempUser = this.tempUser.substr(1, this.tempUser.length-2);
+    }   
+    this.loggedUser = this.tempUser;
 
-  //   this.getBloodDetails();
+    // this.getBloodDetails();
 
-  //   if(this.loggedUser === "admin@gmail.com"){
-  //     this.title = "Admin Dashboard";
-  //   }
-  //   else{
-  //     this.title = "User Dashboard";
-  //   }
-  // }
+    if(this.loggedUser === "admin@gmail.com"){
+      this.title = "Admin Dashboard";
+    }
+    else{
+      this.title = "User Dashboard";
+    }
+  }
 
   // getBloodDetails()
   // {
   //   this.bloodDetails = this.donorService.getBloodDetails();
   // }
 
-  // navigateHome()
-  // {
-  //   if(this.loggedUser === "admin@gmail.com"){
-  //     this.title = "Admin Dashboard";
-  //     this._router.navigate(['/loginsuccess']);
-  //   }
-  //   else{
-  //     this.title = "User Dashboard";
-  //     this._router.navigate(['/userdashboard']);
-  //   }
-  // }
+  navigateHome()
+  {
+   this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
+   this._router.navigate(['user', this.loggedUser]);
+ }
 
   // logout()
   // {

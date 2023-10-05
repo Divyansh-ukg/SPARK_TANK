@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
 })
 export class UserdashboardComponent implements OnInit {
 
-  loggedUser = '';
+  loggedUser = "";
   tempUser = '';
   request = new Requesting();
   msg = '';
@@ -32,10 +32,13 @@ export class UserdashboardComponent implements OnInit {
   ngOnInit(): void 
   {
     this.activatedRoute.params.subscribe(params => {
+      const pattern = "\\\"\\\\\\\\1234\\\\\\\\\\\"";
+      const parsedPattern = pattern.replace(/\\+/g, "");
+// const intValue = parseInt(cleanedPattern, 10); 
       console.log(params['employeeId'],"hello");
-      this.loggedUser = params['employeeId'];
+      this.loggedUser = parsedPattern;
     });
-
+    localStorage.removeItem("employeeId");
     localStorage.setItem("employeeId",this.loggedUser);
     // this.tempUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     // if (this.tempUser.charAt(0) === '"' && this.tempUser.charAt(this.tempUser.length -1) === '"')
@@ -84,12 +87,12 @@ export class UserdashboardComponent implements OnInit {
   reloadData(user: string) 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
-      this.donorService.getRequestHistoryByEmail(parseInt("1")).subscribe(
+      this.donorService.getRequestHistoryByEmail(parseInt("4")).subscribe(
         data => {
           console.log("Request sent Successfully");
           this.msg = "Blood Request Sent Successfully !!!";
           this.bloodRequests = of(data);
-          console.log(data);
+          console.log("dashboard data",data);
         //  this.donorService.setBloodGroup(this.request.bloodgroup);
          // this._router.navigate(['/searchresult'])
         },
