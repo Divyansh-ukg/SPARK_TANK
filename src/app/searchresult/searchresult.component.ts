@@ -122,9 +122,9 @@ export class SearchresultComponent implements OnInit {
       donorEmpId: selectedEmpID ? selectedEmpID: [2,3,4,5]
     }
     this.donorService.sendDataForNotification(request).subscribe(() => {
-      console.log('1111')
+      console.log('email sent successfully')
     },error => {
-      console.log('222')
+      console.log('email error')
     });
   }
 }

@@ -44,17 +44,13 @@ export class RequestbloodComponent implements OnInit {
   
   requestBlood()
   {
-    this.donorService.requestForBlood(this.request).subscribe(
-      data => {
-        console.log("Request sent Successfully");
-        console.log(this.request.bloodGroup);
-      },
-      error => {
-        console.log("request Failed");
-        console.log(error.error);
-      }
-    )
-    this._router.navigate(['/searchresult']);
+    this.donorService.requestForBlood(this.request).subscribe((data) => {
+      console.log('data from create api',data);
+      this.donorService.requesterData.bloodGroup = this.request.bloodGroup;
+    this._router.navigate(['/searchresult']); 
+    }, (error) => {
+      console.log('errror from create api',error)
+    })
   }
 
   logout()
