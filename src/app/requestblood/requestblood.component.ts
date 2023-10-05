@@ -26,7 +26,7 @@ export class RequestbloodComponent implements OnInit {
     }   
     this.loggedUser = this.tempUser;
     this.msg = '';
-    this.request.empid = 4;
+    this.request.empid = this.donorService.userID;
     //this.request.empid = localStorage.getItem('employeeId');
     // var employeeId = localStorage.getItem('employeeId');
     // console.log("employee id", employeeId);

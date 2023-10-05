@@ -16,6 +16,8 @@ export class DonorService {
 
   private bloodGroup: any;
 
+  public userID = 4;
+
   public requesterData = {id : '', empid: '', bloodGroup: ''};
 
   public setBloodGroup(data: string)
