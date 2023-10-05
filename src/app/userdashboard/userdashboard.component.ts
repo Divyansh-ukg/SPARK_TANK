@@ -26,6 +26,8 @@ export class UserdashboardComponent implements OnInit {
   totalbloodgroups : Observable<any> | undefined;
   totalunits : Observable<any> | undefined;
   bloodRequests : Observable<any> | undefined;
+  totalRequestHistoryCount: Observable<any> | undefined;
+  totalIncomingRequest: Observable<any> | undefined;
 
   constructor(private _router : Router, private donorService: DonorService, private activatedRoute: ActivatedRoute) { }
 
@@ -47,20 +49,36 @@ export class UserdashboardComponent implements OnInit {
     // }   
     // this.loggedUser = this.tempUser;
     // this.msg = '';
-    // this.number = this.donorService.getTotalDonors();
+   // this.number =  this.donorService.getTotalDonors();
     // this.totalusers = this.donorService.getTotalUsers();
     // this.totalbloodgroups = this.donorService.getTotalBloodGroups();
     // this.totalunits = this.donorService.getTotalUnits();
     // this.donationcount = this.donorService.getTotalDonationCount(this.loggedUser);
     // this.totalrequests = this.donorService.getTotalRequests(this.loggedUser);
-    // this.requests = this.donorService.getRequestHistory();
+    // this.requests = this.donorService.getRequestHistory(this.donorService.userID);
     this.reloadData(this.loggedUser);
+
+    this.donorService.getRequestHistoryByEmail(this.donorService.userID).subscribe(data=>{
+      this.totalRequestHistoryCount = data.length;
+      console.log("hello 1234567",data)
+    });
+
+  
+    this.donorService.getRequestHistory(this.donorService.userID).subscribe(data=>{
+      this.totalIncomingRequest = data.length;
+      console.log("hello 1234567",data)
+    });
+
   }
 
   navigateHome()
   {
    this.loggedUser = JSON.stringify(localStorage.getItem('employeeId')|| '{}');
    this._router.navigate(['user', this.loggedUser]);
+ }
+
+ navigateToRequestHistory(){
+  this._router.navigate(['/requesthistoryfromuser'])
  }
 
 
@@ -113,11 +131,6 @@ export class UserdashboardComponent implements OnInit {
     
       // console.log(this.bloodRequests);
       
-  }
-
-  moreInfo(data: any){
-    this.donorService.idForMoreInfo = data?.id;
-    this._router.navigate(['/moreinfo']);
   }
 
 

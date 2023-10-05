@@ -77,6 +77,10 @@ export class RequesthistoryfromuserComponent implements OnInit {
     this._router.navigate(['/searchresult']);
   }
 
+  moreInfo(data: any){
+    this.donorService.idForMoreInfo = data?.id;
+    this._router.navigate(['/moreinfo']);
+  }
 
 
   logout()
