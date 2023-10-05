@@ -50,7 +50,7 @@
               </ng-template>
       
               <ng-template [ngIf]="history.status.toLowerCase() === 'pending'">               
-                <button (click)="pendingRequest(history.bloodgroup)" class="pending">Pending</button>
+                <button (click)="pendingRequest(history)" class="pending">Pending</button>
               </ng-template>
               <ng-template [ngIf]="history.status.toLowerCase() === 'sent'">
                 <button (click)="moreInfo(history)" class="pending">More Info</button>
