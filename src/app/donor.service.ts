@@ -20,6 +20,8 @@ export class DonorService {
 
   public requesterData = {id : '', empid: '', bloodGroup: ''};
 
+  public idForMoreInfo:string = "";
+
   public setBloodGroup(data: string)
   {
     this.bloodGroup = data;
@@ -133,6 +135,12 @@ export class DonorService {
 public sendDataForNotification(requestData : any) : Observable<any>
   {
     return this._http.post<any>(`${NAV_URL}/api/blood-request/send`,requestData);
+  }
+
+
+  public getMoreInfoData(id : string) : Observable<any>
+  {
+    return this._http.get(`${NAV_URL}/api/blood-request/acceptedstatus/`+id);
   }
   
 

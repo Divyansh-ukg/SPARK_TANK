@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2
+            style="text-align: center; font-family: 'Oswald', sans-serif;color: maroon; margin-top: 3%; margin-bottom: 3%;">
+            More Info
+        </h2>
+    </div>
+    <div class="card-container" *ngIf="searchBloodGroupResult.length >0">
+        <div class="card" *ngFor="let result of searchBloodGroupResult" id="bloodCards">
+            <mat-card>
+                
+                <mat-card-header>
+                    <a><img *ngIf="result.gender === 'Male' || result.gender === 'male'" class="bloodimg" [src]="'assets/img/male.png'" width="120" height="120" style="margin-left: 72px;"></a>
+                    <a><img *ngIf="result.gender === 'Female' || result.gender === 'female'" class="bloodimg" [src]="'assets/img/female.png'" width="120" height="120" style="margin-left: 72px;"></a>
+                  </mat-card-header>
+                    <mat-card-content>
+                        <b style="color: navy;"> Name : </b> <b>{{result.name}}</b> 
+                        <br>
+                        <b style="color: navy;">Blood Group : </b><b class="element" style="color: red;"> {{result.bloodGroup}}</b>
+                        <br>
+                        <b style="color: navy;">Emp ID : </b><b class="element"> {{result.id}}</b>
+                        <br>
+                        <b style="color: navy;">Contact : </b><b class="element"> {{result.phoneNum}}</b>
+                        <br>
+                      </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="searchBloodGroupResult.length === 0">
+        NO RECORD
+    </div>
+</div>
+
+
+<br><br>
+<app-footer></app-footer>

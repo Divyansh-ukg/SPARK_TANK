@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { SearchresultComponent } from './searchresult/searchresult.component';
 import { HeaderComponent } from './header/header.component';
+import { MoreinfoComponent } from './moreinfo/moreinfo.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HeaderComponent } from './header/header.component';
     UserasdonorComponent,
     RequesthistoryfromuserComponent,
     SearchresultComponent,
-    HeaderComponent
+    HeaderComponent,
+    MoreinfoComponent
   ],
   imports: [
     BrowserModule,

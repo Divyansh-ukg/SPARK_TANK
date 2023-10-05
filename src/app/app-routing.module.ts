@@ -19,6 +19,7 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { SearchresultComponent } from './searchresult/searchresult.component';
+import { MoreinfoComponent } from './moreinfo/moreinfo.component';
 
 // const routes: Routes = [
 //   {path:'',component:LoginComponent},
@@ -56,7 +57,8 @@ const routes: Routes = [
   {path:'requestblood',component:RequestbloodComponent},
   {path:'userasdonor',component:UserasdonorComponent},
   {path:'userdashboard',component:UserdashboardComponent},
-  {path:'searchresult',component:SearchresultComponent}
+  {path:'searchresult',component:SearchresultComponent},
+  {path:'moreinfo',component:MoreinfoComponent}
 ];
 
 

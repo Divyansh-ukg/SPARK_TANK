@@ -115,5 +115,10 @@ export class UserdashboardComponent implements OnInit {
       
   }
 
+  moreInfo(data: any){
+    this.donorService.idForMoreInfo = data?.id;
+    this._router.navigate(['/moreinfo']);
+  }
+
 
 }
