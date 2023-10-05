@@ -49,11 +49,11 @@
                 <button (click)="acceptRequest()" class="accepted">Accepted</button>
               </ng-template>
       
-              <ng-template [ngIf]="history.status.toLowerCase() === 'pending'">
-                <ng-template [ngIf]="history.status.toLowerCase() === 'sent'">
-                  <button (click)="moreInfo(history)" class="pending">More Info</button>
-               
+              <ng-template [ngIf]="history.status.toLowerCase() === 'pending'">               
                 <button (click)="pendingRequest(history.bloodgroup)" class="pending">Pending</button>
+              </ng-template>
+              <ng-template [ngIf]="history.status.toLowerCase() === 'sent'">
+                <button (click)="moreInfo(history)" class="pending">More Info</button>
               </ng-template>
               <!-- <div *ngIf="history.status === 'accept' && loggedUser !== 'admin@gmail.com'" class="accepted">Accepted</div>
               <div *ngIf="history.status === 'false' && loggedUser !== 'admin@gmail.com'" class="pending">Pending</div>
