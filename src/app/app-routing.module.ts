@@ -51,7 +51,7 @@ const routes: Routes = [
   {path:'bloodStock',component:BloodstockComponent},
   {path:'bloodStockuser',component:UserdashboardComponent},
   {path:'userprofile',component:UserprofileComponent},
-  {path:'incommingrequest',component:RequesthistoryComponent},
+  {path:'incomingrequest',component:RequesthistoryComponent},
   {path:'requesthistoryfromuser',component:RequesthistoryfromuserComponent},
   {path:'requestblood',component:RequestbloodComponent},
   {path:'userasdonor',component:UserasdonorComponent},
