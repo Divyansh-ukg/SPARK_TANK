@@ -55,7 +55,7 @@ export class RequesthistoryfromuserComponent implements OnInit {
   reloadData(user: string) 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
-      this.donorService.getRequestHistoryByEmail((4)).subscribe(
+      this.donorService.getRequestHistoryByEmail((this.donorService.userID)).subscribe(
         data => {
           console.log("Request sent Successfully");
           this.msg = "Blood Request Sent Successfully !!!";

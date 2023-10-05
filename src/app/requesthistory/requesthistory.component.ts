@@ -49,7 +49,7 @@ export class RequesthistoryComponent implements OnInit {
   reloadData(user: string) 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
-      this.donorService.getRequestHistory(parseInt("4")).subscribe(
+      this.donorService.getRequestHistory(this.donorService.userID).subscribe(
         data => {
           console.log("Request sent Successfully");
           this.msg = "Blood Request Sent Successfully !!!";
