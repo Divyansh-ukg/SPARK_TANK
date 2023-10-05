@@ -117,9 +117,9 @@ export class SearchresultComponent implements OnInit {
       return;
     }
     const request = {
-      bloodRequestId: this.donorService.requesterData.id ? this.donorService.requesterData.id : 8,
-      requesterEmpId: this.donorService.requesterData.empid ? this.donorService.requesterData.empid : 3,
-      donorEmpId: selectedEmpID ? selectedEmpID: [2,3,4,5]
+      bloodRequestId: this.donorService.requesterData.id,
+      requesterEmpId: this.donorService.requesterData.empid,
+      donorEmpId: selectedEmpID
     }
     this.donorService.sendDataForNotification(request).subscribe(() => {
       console.log('email sent successfully')

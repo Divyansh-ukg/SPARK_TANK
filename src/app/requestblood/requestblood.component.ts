@@ -45,9 +45,7 @@ export class RequestbloodComponent implements OnInit {
   requestBlood()
   {
     this.donorService.requestForBlood(this.request).subscribe((data) => {
-      console.log('data from create api',data);
-      this.donorService.requesterData.bloodGroup = this.request.bloodGroup;
-    this._router.navigate(['/searchresult']); 
+    this._router.navigate(['/requesthistoryfromuser']); 
     }, (error) => {
       console.log('errror from create api',error)
     })
