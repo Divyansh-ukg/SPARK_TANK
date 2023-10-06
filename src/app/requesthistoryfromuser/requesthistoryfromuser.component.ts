@@ -10,7 +10,7 @@ import { DonorService } from '../donor.service';
 })
 export class RequesthistoryfromuserComponent implements OnInit {
 
-  loggedUser = '';
+  loggedUser = "";
   tempUser = '';
   msg = '';
   title = '';
@@ -33,7 +33,7 @@ export class RequesthistoryfromuserComponent implements OnInit {
     else{
       this.title = "User Dashboard";
     }
-    this.reloadData(this.loggedUser);
+    this.reloadData();
   }
 
   navigateHome()
@@ -52,7 +52,7 @@ export class RequesthistoryfromuserComponent implements OnInit {
   // }
 
 
-  reloadData(user: string) 
+  reloadData() 
   {
       // this.requests = this.donorService.getRequestHistoryByEmail(user).pipe();
       this.donorService.getRequestHistoryByEmail((this.donorService.userID)).subscribe(

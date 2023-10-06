@@ -186,7 +186,7 @@ table, th, td, tr{
 th{
   font-size: larger;
   text-transform: uppercase;
-  color: white;
+  color: green;
 }
 td{
   text-transform: capitalize;
