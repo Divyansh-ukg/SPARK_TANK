@@ -1,73 +1,111 @@
-<div class="sidebar-logo">
-  <div class="welcometxt" style="float: left;"><b style="color: white;">User Dashboard</b></div>
-    <b class="sidebar-text" style="color: whitesmoke;"><i class="fa fa-user"></i> Welcome {{loggedUser}}</b>
-    <button class="logoutbtn" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
-</div>
 
-<div class="sidebar-container">
-    
-    <ul class="sidebar-navigation">
-      <li>
-         <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/requestblood']" style="cursor: pointer;">Make Request</label>
-      </li>
-      <li>
-        <i class="fa fa-paper-plane" aria-hidden="true"></i> <label [routerLink]="['/requesthistoryfromuser']" style="cursor: pointer;">Request History</label> 
-      </li>
-      <li>
-        <i class="fa fa-heart" aria-hidden="true"></i> <label [routerLink]="['/userasdonor']" style="cursor: pointer;">Donate Blood</label> 
-      </li>
-      <li>
-        <i class="fa fa-list" aria-hidden="true"></i> <label [routerLink]="['/donorlist']" style="cursor: pointer;">Available Donors</label> 
-      </li>
-      <li>
-        <i class="fa fa-paper-plane" aria-hidden="true"></i> <label [routerLink]="['/incomingrequest']" style="cursor: pointer;">Pending Request</label> 
-      </li>
-      <li>
-          <i class="fa fa-cart-plus" aria-hidden="true"></i> <label [routerLink]="['/bloodStock']" style="cursor: pointer;">Blood stock</label>
-      </li>
 
-    </ul>
-</div>  
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <div class="welcometxt">
+                <b>User Dashboard</b>
+            </div>
+            <b class="sidebar-text">
+                <i class="fa fa-user"></i> Welcome {{loggedUser}}
+            </b>
+            <!-- <button class="logoutbtn" (click)="logout()">
+                <i class="fa fa-sign-out"></i> Logout
+            </button> -->
+        </div>
 
-<div class="row" style="padding: 15px;">
-<div style="color: maroon; font-weight: bold; font-size: 30px; margin: 2% 0% 5% 20%;"><b>Welcome to User Dashboard</b></div>
-<div  class="card bg-light"id="bloodCards">
-    <div (click) ="navigateToRequestHistory()" class="card-body text-left">
-      <div style="font-weight: bolder; font-size: 28px;">Your Total Request made <i class="fa fa-heart" aria-hidden="true"></i></div>
-      <div style="color: maroon; text-transform: capitalize; font-size: larger; font-size: 20px; font-weight: bolder;">{{totalRequestHistoryCount}} Request</div>
+        <div class="sidebar-container">
+            <ul class="sidebar-navigation">
+                <li>
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <label [routerLink]="['/requestblood']" style="cursor: pointer;">Make Request</label>
+                </li>
+                <li>
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <label [routerLink]="['/requesthistoryfromuser']" style="cursor: pointer;">Request History</label>
+                </li>
+                <li>
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <label [routerLink]="['/userasdonor']" style="cursor: pointer;">Donate Blood</label>
+                </li>
+                <li>
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                    <label [routerLink]="['/donorlist']" style="cursor: pointer;">Available Donors</label>
+                </li>
+                <li>
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <label [routerLink]="['/incomingrequest']" style="cursor: pointer;">Pending Request</label>
+                </li>
+                <li>
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <label [routerLink]="['/bloodStock']" style="cursor: pointer;">Blood Stock</label>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<div  class="card bg-light"id="bloodCards">
-  <div (click) ="navigateToIncomingRequestHistory()" class="card-body text-left">
-    <div class="card-text" style="font-weight: bolder; font-size: 28px;">Your Total Incoming Requests <i class="fa fa-paper-plane" aria-hidden="true"></i></div>
-    <div style="color: maroon; text-transform: capitalize; font-size: larger; font-size: 20px; font-weight: bolder;">{{totalIncomingRequest}} requests</div>
-  </div>
-</div>
-<!-- <div *ngFor="let details of donationcount | async" class="card bg-light"id="bloodCards">
-  <div class="card-body text-left">
-    <div class="card-text" style="font-weight: bolder; font-size: 28px;">Your Blood Donations <i class="fa fa-plus" aria-hidden="true"></i></div>
-    <div style="color: maroon; text-transform: capitalize; font-size: larger; font-size: 20px; font-weight: bolder;">{{details}} times</div>
-  </div>
-</div> -->
-<!-- <div *ngFor="let details of totalusers | async" class="card bg-light"id="bloodCards">
-  <div class="card-body text-left">
-    <div class="card-text" style="font-weight: bolder; font-size: 28px;">Total Registered Users <i class="fa fa-user" aria-hidden="true"></i></div>
-    <div style="color: maroon; text-transform: capitalize; font-size: larger; font-size: 20px; font-weight: bolder;">{{details}} users</div>
-  </div>
-</div> -->
-<!-- <div *ngFor="let details of totalbloodgroups | async" class="card bg-light"id="bloodCards">
-  <div class="card-body text-left">
-    <div class="card-text" style="font-weight: bolder; font-size: 28px;">Total Blood Groups <i class="fa fa-list" aria-hidden="true"></i></div>
-    <div style="color: maroon; text-transform: capitalize; font-size: larger; font-size: 20px; font-weight: bolder;">{{details}} blood groups</div>
-  </div>
-</div> -->
-<!-- <div *ngFor="let details of totalunits | async" class="card bg-light"id="bloodCards">
-  <div class="card-body text-left">
-    <div class="card-text" style="font-weight: bolder; font-size: 28px;">Total Available Units <i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
-    <div style="color: maroon; text-transform: capitalize; font-size: larger; font-size: 20px; font-weight: bolder;">{{details}} units of blood (in ml)</div>
-  </div>
-</div> -->
-</div>
 
-<br><br>
-<app-footer></app-footer>
+    <div class="content">
+        <div class="page-title">
+            <h1>Welcome to User Dashboard</h1>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <div (click)="navigateToRequestHistory()" class="card-content">
+                    <h2>Your Total Requests Made <i class="fa fa-heart" aria-hidden="true"></i></h2>
+                    <p class="request-count">{{totalRequestHistoryCount}} Requests</p>
+                    <ng-container *ngIf="totalRequestHistoryCount > 0; else noDataMessage1">
+                        <ngx-charts-bar-vertical
+                            [view]="[200, 200]"
+                            [results]="[{ 'name': 'Total Requests', 'value': totalRequestHistoryCount }]"
+                        ></ngx-charts-bar-vertical>
+                    </ng-container>
+                    <ng-template #noDataMessage1>
+                        <p class="no-data-message">No Request made</p>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="card">
+                <div (click)="navigateToIncomingRequestHistory()" class="card-content">
+                    <h2>Your Total Incoming Requests <i class="fa fa-paper-plane" aria-hidden="true"></i></h2>
+                    <p class="request-count">{{totalIncomingRequest}} Requests</p>
+                    <ng-container *ngIf="totalIncomingRequest > 0; else noDataMessage">
+                        <ngx-charts-bar-vertical
+                            [view]="[200, 200]"
+                            [results]="[{ 'name': 'Total Incoming Requests', 'value': totalIncomingRequest }]"
+                        ></ngx-charts-bar-vertical>
+                    </ng-container>
+                    <ng-template #noDataMessage>
+                        <div class="no-data-message-container">
+                            <p class="no-data-message-text">No incoming request</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="chart-container">
+            <h2>Available Donor Data</h2>
+            <ngx-charts-bar-vertical
+              [view]="[400, 200]"
+              [results]="single"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              xAxisLabel="bloodGroup"
+              yAxisLabel="count"
+            ></ngx-charts-bar-vertical>
+          </div>
+       
+    </div>
+
+    <!-- Include ngx-charts module -->
+
+   
+
+    <footer>
+        <app-footer></app-footer>
+    </footer>

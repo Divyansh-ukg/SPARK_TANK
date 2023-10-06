@@ -1,217 +1,182 @@
+/* Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
 
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Sidebar Styles */
 .sidebar-container {
     position: relative;
-    width: 220px;
-    height: 520px;
-    left: 0;
-    overflow-x: hidden;
+    width: 250px; /* Adjust the width as needed */
+    height: 100%;
     overflow-y: auto;
     background: #1a1a1a;
     color: #fff;
-  }
-  .sidebar-text
-  {
-      font-size: small;
-  }
-  .content-container {
-    padding-top: 20px;
-  }
-  
-  .sidebar-logo {
-    padding: 10px 15px 10px 30px;
-    font-size: 20px;
-    text-align: right;
+}
+
+.sidebar-text {
+    font-size: 14px; /* Adjust the font size */
+}
+
+.sidebar-logo {
+    padding: 10px 30px;
+    font-size: 24px;
+    text-align: left;
     background-color: #13534e;
     width: 100%;
-  }
-  
-  .sidebar-navigation {
+}
+
+.sidebar-navigation {
     padding: 0;
     margin: 0;
     list-style-type: none;
     position: relative;
-  }
-  
-  .sidebar-navigation li {
+}
+
+.sidebar-navigation li {
     background-color: transparent;
     position: relative;
-    display: inline-block;
     width: 100%;
-    font-size: larger;
-    line-height: 20px;
-    padding: 20px 15px 30px 20px;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 16px 20px;
     display: block;
-    margin-top: 8%;
+    margin-top: 10px;
     color: #fff;
-    -webkit-transition: background-color 1s ease-out;
-  -moz-transition: background-color 1s ease-out;
-  -o-transition: background-color 1s ease-out;
-  transition: background-color 1s ease-out;
-  }
-  .sidebar-navigation li:hover{
-    background-color: #13584f;
     cursor: pointer;
-  }
-  
-  .sidebar-navigation li .fa {
-    margin-right: 10px;
-  }
-  
-  .sidebar-navigation li a:active,
-  .sidebar-navigation li a:hover,
-  .sidebar-navigation li a:focus {
-    text-decoration: none;
-    outline: none;
-  }
-  
-  .sidebar-navigation li::before {
-    background-color: #13584f;
-    
-    content: '';
-    height: 100%;
-    left: 0;
-    top: 0;
-    -webkit-transition: width 0.2s ease-in;
-    transition: width 0.2s ease-in;
-    width: 3px;
-    z-index: -1;
-  }
-  
-  .sidebar-navigation li:hover::before {
-    width: 100%;
-  }
-  
-  .sidebar-navigation .header {
-    font-size: 12px;
-    text-transform: uppercase;
-    background-color: #151515;
-    padding: 10px 15px 10px 30px;
-  }
-  
-  .sidebar-navigation .header::before {
-    background-color: transparent;
-  }
-  
-  .content-container {
-    padding-left: 220px;
-  }
+    transition: background-color 0.3s;
+}
 
-  .logoutbtn{
-    border: none;
-    background:transparent;
-    color: white;
-    border-radius: 15px;
-    margin-left: 10px;
-    padding: 5px 10px 5px 10px;
-    font-size: small;
-  }
-  .logoutbtn:hover{
-    cursor: pointer;
-    background-color: #23ad9b;
-    padding: 5px 8px 5px 8px;
-    border-radius: 15px;
-  }
-.container
-{
-    max-width: 550px;
-    padding: 40px 40px 25px 40px;
-    margin-top: -36%; 
-    margin-left: 35%;
-    border-radius: 10px; 
-    box-shadow: 5px 5px 35px 8px rgb(147, 158, 147); 
-    border-top: 8px solid rgb(138, 24, 9); 
-    background-color: white;
+.sidebar-navigation li:hover {
+    background-color: #13584f;
+}
+
+.sidebar-navigation li .fa {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Content Styles */
+.content-container {
+    padding-left: 250px; /* Match the sidebar width */
+    padding-top: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
-input{
-    border-radius: 12px;
-    margin-top: 8px;
+
+/* Button Styles */
+.logoutbtn, .registerbtn {
+    border: none;
+    background: transparent;
+    color: white;
+    border-radius: 15px;
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, padding 0.2s, border-radius 0.2s;
 }
-.textual
-{
-    color: rgb(64, 85, 15); 
-    text-align: center; 
+
+.logoutbtn:hover, .registerbtn:hover {
+    background-color: #23ad9b;
+    padding: 8px 18px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+/* Container Styles */
+.container {
+    max-width: 550px;
+    padding: 40px;
+    margin-top: 20px; /* Adjust as needed */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    border-top: 8px solid #8a1809;
+    background-color: white;
+}
+
+/* Textual Styles */
+.textual {
+    color: #40550f;
+    text-align: center;
     margin-top: -20px;
     font-family: 'Oswald', sans-serif;
     padding: 5px;
     text-transform: uppercase;
 }
-label{
-    margin-top: 8px;
+
+/* Table Styles */
+.panel-body {
+    margin-left: 5%;
+    margin-right: 5%;
 }
-.registerbtn
-{
-    background-color: transparent;
-    padding-left: 8%;
-    padding-right: 8%;
-    margin: auto;  
-    padding-bottom: 7px;
-    border-radius: 15px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
+
+table {
+    text-align: center;
     align-items: center;
-    color: black;
-    border: 1px solid black;
+    vertical-align: middle;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 20px;
 }
-.registerbtn:hover
-{
-    background-color: rgb(23, 78, 78);
-    padding-left: 7%;
-    padding-right: 7%;
-    cursor: pointer;
+
+table, th, td, tr {
+    border: 1px solid #a3a1a1;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 16px;
+}
+
+thead {
+    background-color: #23886a;
     color: white;
 }
-.panel-body{
-  margin-left: 5%;
-  margin-right: 5%;
+
+th {
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 12px;
 }
-thead{
-  background-color: rgb(35, 136, 106);
+
+td {
+    padding: 10px;
 }
-table{
-  text-align: center;
-  align-items: center;
-  vertical-align: middle;
+
+/* Status Labels */
+.accepted, .pending, .rejected {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 5px;
 }
-table, th, td, tr{
-  border: 1px solid rgb(163, 161, 161);
-  font-family: serif;
-  font-weight: bold;
-  font-style: normal;
-  font-size: large;
+
+.accepted {
+    background-color: #1e741e;
+    color: white;
 }
-th{
-  font-size: larger;
-  text-transform: uppercase;
-  color: white;
+
+.pending {
+    background-color: #c4891c;
+    color: white;
 }
-td{
-  text-transform: capitalize;
-}
-.accepted{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(30, 116, 30);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.pending{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgb(196, 137, 28);
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
-}
-.rejected{
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: red;
-  padding: 5px 10px 5px 10px;
-  color: white;
-  font-weight: bolder;
+
+.rejected {
+    background-color: red;
+    color: white;
 }

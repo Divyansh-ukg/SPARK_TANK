@@ -26,6 +26,7 @@ import { MatCardModule } from '@angular/material/card';
 import { SearchresultComponent } from './searchresult/searchresult.component';
 import { HeaderComponent } from './header/header.component';
 import { MoreinfoComponent } from './moreinfo/moreinfo.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MoreinfoComponent } from './moreinfo/moreinfo.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    NgxChartsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent, LoginComponent]
