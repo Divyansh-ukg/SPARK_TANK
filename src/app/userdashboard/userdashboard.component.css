@@ -151,7 +151,7 @@ ngx-charts-bar-vertical {
 
 /* Footer Styles */
 footer {
-  background-color: #333;
+  /* background-color: #333; */
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -314,7 +314,7 @@ body {
 }
 
 /* Footer Styles */
-footer {
+/* footer {
   background-color: #333;
   color: white;
   text-align: center;
@@ -322,7 +322,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-}
+} */
 
 
 
