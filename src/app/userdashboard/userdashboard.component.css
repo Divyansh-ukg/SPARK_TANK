@@ -27,7 +27,7 @@ body {
   width: 100%;
   height: 300px; /* Adjust the height as needed */
   margin-left: 35%;
-  margin-top:  5%;
+ margin-top:  2%; 
 }
 
 ngx-charts-bar-vertical {
